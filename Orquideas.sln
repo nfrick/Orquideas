@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orquideas", "Orquideas\Orquideas.csproj", "{4EC8866A-4D2A-4491-91F9-4C616E3FA23C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{3D339CBC-F753-4043-8AC4-B71B8D834010}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4EC8866A-4D2A-4491-91F9-4C616E3FA23C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EC8866A-4D2A-4491-91F9-4C616E3FA23C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EC8866A-4D2A-4491-91F9-4C616E3FA23C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D339CBC-F753-4043-8AC4-B71B8D834010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D339CBC-F753-4043-8AC4-B71B8D834010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D339CBC-F753-4043-8AC4-B71B8D834010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D339CBC-F753-4043-8AC4-B71B8D834010}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

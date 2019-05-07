@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OrquideasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblContainerTypes">
+          <Key>
+            <PropertyRef Name="ContainerID" />
+          </Key>
+          <Property Name="ContainerID" Type="tinyint" Nullable="false" />
+          <Property Name="Container" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFloracoes">
+          <Key>
+            <PropertyRef Name="FloracaoID" />
+          </Key>
+          <Property Name="FloracaoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrquideaID" Type="int" Nullable="false" />
+          <Property Name="FloracaoInicio" Type="datetime" />
+          <Property Name="FloracaoTermino" Type="datetime" />
+          <Property Name="Flores" Type="tinyint" />
+          <Property Name="Hastes" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tblGeneros">
+          <Key>
+            <PropertyRef Name="GeneroID" />
+          </Key>
+          <Property Name="GeneroID" Type="int" Nullable="false" />
+          <Property Name="Genero" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="GeneroAbrev" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Composicao" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOrquideas">
+          <Key>
+            <PropertyRef Name="OrquideaID" />
+          </Key>
+          <Property Name="OrquideaID" Type="int" Nullable="false" />
+          <Property Name="GeneroID" Type="int" Nullable="false" />
+          <Property Name="Especie" Type="nvarchar" MaxLength="70" />
+          <Property Name="Numero" Type="tinyint" Nullable="false" />
+          <Property Name="Sequencial" Type="tinyint" />
+          <Property Name="CorPrincipal" Type="nvarchar" MaxLength="15" />
+          <Property Name="CorSecundaria" Type="nvarchar" MaxLength="20" />
+          <Property Name="Data" Type="datetime" />
+          <Property Name="Termino" Type="datetime" />
+          <Property Name="Origem" Type="nvarchar" MaxLength="50" />
+          <Property Name="Matriz" Type="int" />
+          <Property Name="Observacoes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblRepots">
+          <Key>
+            <PropertyRef Name="RepotID" />
+          </Key>
+          <Property Name="RepotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrquideaID" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Container" Type="tinyint" Nullable="false" />
+          <Property Name="Xaxim" Type="bit" Nullable="false" />
+          <Property Name="Pinus" Type="bit" Nullable="false" />
+          <Property Name="CascaPinus" Type="bit" Nullable="false" />
+          <Property Name="TroncoCentral" Type="bit" Nullable="false" />
+          <Property Name="Sphagnum" Type="bit" Nullable="false" />
+          <Property Name="Carvao" Type="bit" Nullable="false" />
+          <Property Name="TerraVegetal" Type="bit" Nullable="false" />
+          <Property Name="Areia" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblFloracoes_tblOrquideas">
+          <End Role="tblOrquideas" Type="Self.tblOrquideas" Multiplicity="1" />
+          <End Role="tblFloracoes" Type="Self.tblFloracoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrquideas">
+              <PropertyRef Name="OrquideaID" />
+            </Principal>
+            <Dependent Role="tblFloracoes">
+              <PropertyRef Name="OrquideaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrquideas_tblGeneros">
+          <End Role="tblGeneros" Type="Self.tblGeneros" Multiplicity="1" />
+          <End Role="tblOrquideas" Type="Self.tblOrquideas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGeneros">
+              <PropertyRef Name="GeneroID" />
+            </Principal>
+            <Dependent Role="tblOrquideas">
+              <PropertyRef Name="GeneroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRepots_tblContainerTypes">
+          <End Role="tblContainerTypes" Type="Self.tblContainerTypes" Multiplicity="1" />
+          <End Role="tblRepots" Type="Self.tblRepots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContainerTypes">
+              <PropertyRef Name="ContainerID" />
+            </Principal>
+            <Dependent Role="tblRepots">
+              <PropertyRef Name="Container" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRepots_tblOrquideas">
+          <End Role="tblOrquideas" Type="Self.tblOrquideas" Multiplicity="1" />
+          <End Role="tblRepots" Type="Self.tblRepots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrquideas">
+              <PropertyRef Name="OrquideaID" />
+            </Principal>
+            <Dependent Role="tblRepots">
+              <PropertyRef Name="OrquideaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrquideasModelStoreContainer">
+          <EntitySet Name="tblContainerTypes" EntityType="Self.tblContainerTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFloracoes" EntityType="Self.tblFloracoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGeneros" EntityType="Self.tblGeneros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrquideas" EntityType="Self.tblOrquideas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRepots" EntityType="Self.tblRepots" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblFloracoes_tblOrquideas" Association="Self.FK_tblFloracoes_tblOrquideas">
+            <End Role="tblOrquideas" EntitySet="tblOrquideas" />
+            <End Role="tblFloracoes" EntitySet="tblFloracoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrquideas_tblGeneros" Association="Self.FK_tblOrquideas_tblGeneros">
+            <End Role="tblGeneros" EntitySet="tblGeneros" />
+            <End Role="tblOrquideas" EntitySet="tblOrquideas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRepots_tblContainerTypes" Association="Self.FK_tblRepots_tblContainerTypes">
+            <End Role="tblContainerTypes" EntitySet="tblContainerTypes" />
+            <End Role="tblRepots" EntitySet="tblRepots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRepots_tblOrquideas" Association="Self.FK_tblRepots_tblOrquideas">
+            <End Role="tblOrquideas" EntitySet="tblOrquideas" />
+            <End Role="tblRepots" EntitySet="tblRepots" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrquideasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="OrquideasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Floracoes" EntityType="OrquideasModel.Floracao" />
+          <EntitySet Name="Generos" EntityType="OrquideasModel.Genero" />
+          <EntitySet Name="Orquideas" EntityType="OrquideasModel.Orquidea" />
+          <EntitySet Name="Repots" EntityType="OrquideasModel.Repot" />
+          <AssociationSet Name="FK_tblFloracoes_tblOrquideas" Association="OrquideasModel.FK_tblFloracoes_tblOrquideas">
+            <End Role="tblOrquidea" EntitySet="Orquideas" />
+            <End Role="tblFloraco" EntitySet="Floracoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrquideas_tblGeneros" Association="OrquideasModel.FK_tblOrquideas_tblGeneros">
+            <End Role="tblGenero" EntitySet="Generos" />
+            <End Role="tblOrquidea" EntitySet="Orquideas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRepots_tblOrquideas" Association="OrquideasModel.FK_tblRepots_tblOrquideas">
+            <End Role="tblOrquidea" EntitySet="Orquideas" />
+            <End Role="tblRepot" EntitySet="Repots" />
+          </AssociationSet>
+          <EntitySet Name="ContainerTypes" EntityType="OrquideasModel.ContainerType" />
+          <AssociationSet Name="FK_tblRepots_tblContainerTypes" Association="OrquideasModel.FK_tblRepots_tblContainerTypes">
+            <End Role="tblContainerType" EntitySet="ContainerTypes" />
+            <End Role="Repot" EntitySet="Repots" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Floracao">
+          <Key>
+            <PropertyRef Name="FloracaoID" />
+          </Key>
+          <Property Name="FloracaoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrquideaID" Type="Int32" Nullable="false" />
+          <Property Name="FloracaoInicio" Type="DateTime" Precision="3" />
+          <Property Name="FloracaoTermino" Type="DateTime" Precision="3" />
+          <Property Name="Flores" Type="Byte" />
+          <Property Name="Hastes" Type="Byte" />
+          <NavigationProperty Name="Orquidea" Relationship="OrquideasModel.FK_tblFloracoes_tblOrquideas" FromRole="tblFloraco" ToRole="tblOrquidea" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="GeneroID" />
+          </Key>
+          <Property Name="GeneroID" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GeneroAbrev" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Composicao" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orquideas" Relationship="OrquideasModel.FK_tblOrquideas_tblGeneros" FromRole="tblGenero" ToRole="tblOrquidea" />
+        </EntityType>
+        <EntityType Name="Orquidea">
+          <Key>
+            <PropertyRef Name="OrquideaID" />
+          </Key>
+          <Property Name="OrquideaID" Type="Int32" Nullable="false" />
+          <Property Name="GeneroID" Type="Int32" Nullable="false" />
+          <Property Name="Especie" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Numero" Type="Byte" Nullable="false" />
+          <Property Name="Sequencial" Type="Byte" />
+          <Property Name="CorPrincipal" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CorSecundaria" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <Property Name="Termino" Type="DateTime" Precision="3" />
+          <Property Name="Origem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Matriz" Type="Int32" />
+          <Property Name="Observacoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Floracoes" Relationship="OrquideasModel.FK_tblFloracoes_tblOrquideas" FromRole="tblOrquidea" ToRole="tblFloraco" />
+          <NavigationProperty Name="Genero" Relationship="OrquideasModel.FK_tblOrquideas_tblGeneros" FromRole="tblOrquidea" ToRole="tblGenero" />
+          <NavigationProperty Name="Repots" Relationship="OrquideasModel.FK_tblRepots_tblOrquideas" FromRole="tblOrquidea" ToRole="tblRepot" />
+        </EntityType>
+        <EntityType Name="Repot">
+          <Key>
+            <PropertyRef Name="RepotID" />
+          </Key>
+          <Property Name="RepotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrquideaID" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Container" Type="Byte" Nullable="false" />
+          <Property Name="Xaxim" Type="Boolean" Nullable="false" />
+          <Property Name="Pinus" Type="Boolean" Nullable="false" />
+          <Property Name="CascaPinus" Type="Boolean" Nullable="false" />
+          <Property Name="TroncoCentral" Type="Boolean" Nullable="false" />
+          <Property Name="Sphagnum" Type="Boolean" Nullable="false" />
+          <Property Name="Carvao" Type="Boolean" Nullable="false" />
+          <Property Name="TerraVegetal" Type="Boolean" Nullable="false" />
+          <Property Name="Areia" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Orquidea" Relationship="OrquideasModel.FK_tblRepots_tblOrquideas" FromRole="tblRepot" ToRole="tblOrquidea" />
+          <NavigationProperty Name="ContainerType" Relationship="OrquideasModel.FK_tblRepots_tblContainerTypes" FromRole="Repot" ToRole="tblContainerType" />
+        </EntityType>
+        <Association Name="FK_tblFloracoes_tblOrquideas">
+          <End Type="OrquideasModel.Orquidea" Role="tblOrquidea" Multiplicity="1" />
+          <End Type="OrquideasModel.Floracao" Role="tblFloraco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrquidea">
+              <PropertyRef Name="OrquideaID" />
+            </Principal>
+            <Dependent Role="tblFloraco">
+              <PropertyRef Name="OrquideaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrquideas_tblGeneros">
+          <End Type="OrquideasModel.Genero" Role="tblGenero" Multiplicity="1" />
+          <End Type="OrquideasModel.Orquidea" Role="tblOrquidea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGenero">
+              <PropertyRef Name="GeneroID" />
+            </Principal>
+            <Dependent Role="tblOrquidea">
+              <PropertyRef Name="GeneroID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRepots_tblOrquideas">
+          <End Type="OrquideasModel.Orquidea" Role="tblOrquidea" Multiplicity="1" />
+          <End Type="OrquideasModel.Repot" Role="tblRepot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrquidea">
+              <PropertyRef Name="OrquideaID" />
+            </Principal>
+            <Dependent Role="tblRepot">
+              <PropertyRef Name="OrquideaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContainerType">
+          <Key>
+            <PropertyRef Name="ContainerID" />
+          </Key>
+          <Property Name="ContainerID" Type="Byte" Nullable="false" />
+          <Property Name="Container" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblRepots" Relationship="OrquideasModel.FK_tblRepots_tblContainerTypes" FromRole="tblContainerType" ToRole="Repot" />
+        </EntityType>
+        <Association Name="FK_tblRepots_tblContainerTypes">
+          <End Type="OrquideasModel.ContainerType" Role="tblContainerType" Multiplicity="1" />
+          <End Type="OrquideasModel.Repot" Role="Repot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblContainerType">
+              <PropertyRef Name="ContainerID" />
+            </Principal>
+            <Dependent Role="Repot">
+              <PropertyRef Name="Container" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrquideasModelStoreContainer" CdmEntityContainer="OrquideasEntities">
+          <EntitySetMapping Name="Floracoes">
+            <EntityTypeMapping TypeName="OrquideasModel.Floracao">
+              <MappingFragment StoreEntitySet="tblFloracoes">
+                <ScalarProperty Name="Hastes" ColumnName="Hastes" />
+                <ScalarProperty Name="Flores" ColumnName="Flores" />
+                <ScalarProperty Name="FloracaoTermino" ColumnName="FloracaoTermino" />
+                <ScalarProperty Name="FloracaoInicio" ColumnName="FloracaoInicio" />
+                <ScalarProperty Name="OrquideaID" ColumnName="OrquideaID" />
+                <ScalarProperty Name="FloracaoID" ColumnName="FloracaoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generos">
+            <EntityTypeMapping TypeName="OrquideasModel.Genero">
+              <MappingFragment StoreEntitySet="tblGeneros">
+                <ScalarProperty Name="Composicao" ColumnName="Composicao" />
+                <ScalarProperty Name="GeneroAbrev" ColumnName="GeneroAbrev" />
+                <ScalarProperty Name="Nome" ColumnName="Genero" />
+                <ScalarProperty Name="GeneroID" ColumnName="GeneroID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orquideas">
+            <EntityTypeMapping TypeName="OrquideasModel.Orquidea">
+              <MappingFragment StoreEntitySet="tblOrquideas">
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="Matriz" ColumnName="Matriz" />
+                <ScalarProperty Name="Origem" ColumnName="Origem" />
+                <ScalarProperty Name="Termino" ColumnName="Termino" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="CorSecundaria" ColumnName="CorSecundaria" />
+                <ScalarProperty Name="CorPrincipal" ColumnName="CorPrincipal" />
+                <ScalarProperty Name="Sequencial" ColumnName="Sequencial" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Especie" ColumnName="Especie" />
+                <ScalarProperty Name="GeneroID" ColumnName="GeneroID" />
+                <ScalarProperty Name="OrquideaID" ColumnName="OrquideaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repots">
+            <EntityTypeMapping TypeName="OrquideasModel.Repot">
+              <MappingFragment StoreEntitySet="tblRepots">
+                <ScalarProperty Name="Areia" ColumnName="Areia" />
+                <ScalarProperty Name="TerraVegetal" ColumnName="TerraVegetal" />
+                <ScalarProperty Name="Carvao" ColumnName="Carvao" />
+                <ScalarProperty Name="Sphagnum" ColumnName="Sphagnum" />
+                <ScalarProperty Name="TroncoCentral" ColumnName="TroncoCentral" />
+                <ScalarProperty Name="CascaPinus" ColumnName="CascaPinus" />
+                <ScalarProperty Name="Pinus" ColumnName="Pinus" />
+                <ScalarProperty Name="Xaxim" ColumnName="Xaxim" />
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="OrquideaID" ColumnName="OrquideaID" />
+                <ScalarProperty Name="RepotID" ColumnName="RepotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContainerTypes">
+            <EntityTypeMapping TypeName="OrquideasModel.ContainerType">
+              <MappingFragment StoreEntitySet="tblContainerTypes">
+                <ScalarProperty Name="Container" ColumnName="Container" />
+                <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

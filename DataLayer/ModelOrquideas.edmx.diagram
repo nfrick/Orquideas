@@ -5,15 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cf3fd96f2aaa4794b7d08bd2512da865" Name="Diagram1">
-        <EntityTypeShape EntityType="OrquideasModel.Floracao" Width="1.5" PointX="7.625" PointY="4.25" />
+        <EntityTypeShape EntityType="OrquideasModel.Floracao" Width="1.5" PointX="7.875" PointY="4.25" />
         <EntityTypeShape EntityType="OrquideasModel.Genero" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="OrquideasModel.Orquidea" Width="1.5" PointX="3" PointY="2.875" />
         <EntityTypeShape EntityType="OrquideasModel.Repot" Width="1.5" PointX="5.375" PointY="1.875" />
         <AssociationConnector Association="OrquideasModel.FK_tblFloracoes_tblOrquideas" />
         <AssociationConnector Association="OrquideasModel.FK_tblOrquideas_tblGeneros" />
         <AssociationConnector Association="OrquideasModel.FK_tblRepots_tblOrquideas" />
-        <EntityTypeShape EntityType="OrquideasModel.ContainerType" Width="1.5" PointX="8.25" PointY="2" />
+        <EntityTypeShape EntityType="OrquideasModel.ContainerType" Width="1.5" PointX="7.875" PointY="2" />
         <AssociationConnector Association="OrquideasModel.FK_tblRepots_tblContainerTypes" />
+        <AssociationConnector Association="OrquideasModel.OrquideaOrquidea" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

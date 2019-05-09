@@ -89,5 +89,24 @@ namespace Orquideas.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Actions_list_add_icon {
+            get {
+                object obj = ResourceManager.GetObject("Actions-list-add-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to F:\Users\Nelson\Documents\Araras\Plantas\Orquideas\Fotos\.
+        /// </summary>
+        internal static string FotosPath {
+            get {
+                return ResourceManager.GetString("FotosPath", resourceCulture);
+            }
+        }
     }
 }

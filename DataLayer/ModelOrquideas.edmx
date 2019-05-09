@@ -36,11 +36,11 @@
           <Key>
             <PropertyRef Name="OrquideaID" />
           </Key>
-          <Property Name="OrquideaID" Type="int" Nullable="false" />
+          <Property Name="OrquideaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GeneroID" Type="int" Nullable="false" />
           <Property Name="Especie" Type="nvarchar" MaxLength="70" />
-          <Property Name="Numero" Type="tinyint" Nullable="false" />
-          <Property Name="Sequencial" Type="tinyint" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Sequencial" Type="int" />
           <Property Name="CorPrincipal" Type="nvarchar" MaxLength="15" />
           <Property Name="CorSecundaria" Type="nvarchar" MaxLength="20" />
           <Property Name="Data" Type="datetime" />
@@ -163,6 +163,10 @@
             <End Role="tblContainerType" EntitySet="ContainerTypes" />
             <End Role="Repot" EntitySet="Repots" />
           </AssociationSet>
+          <AssociationSet Name="OrquideaOrquidea" Association="OrquideasModel.OrquideaOrquidea">
+            <End Role="Orquidea" EntitySet="Orquideas" />
+            <End Role="Orquidea1" EntitySet="Orquideas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Floracao">
           <Key>
@@ -194,7 +198,7 @@
           <Property Name="GeneroID" Type="Int32" Nullable="false" />
           <Property Name="Especie" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="Numero" Type="Byte" Nullable="false" />
-          <Property Name="Sequencial" Type="Byte" />
+          <Property Name="Sequencial" Type="Int32" />
           <Property Name="CorPrincipal" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CorSecundaria" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Data" Type="DateTime" Precision="3" />
@@ -205,6 +209,8 @@
           <NavigationProperty Name="Floracoes" Relationship="OrquideasModel.FK_tblFloracoes_tblOrquideas" FromRole="tblOrquidea" ToRole="tblFloraco" />
           <NavigationProperty Name="Genero" Relationship="OrquideasModel.FK_tblOrquideas_tblGeneros" FromRole="tblOrquidea" ToRole="tblGenero" />
           <NavigationProperty Name="Repots" Relationship="OrquideasModel.FK_tblRepots_tblOrquideas" FromRole="tblOrquidea" ToRole="tblRepot" />
+          <NavigationProperty Name="Mudas" Relationship="OrquideasModel.OrquideaOrquidea" FromRole="Orquidea" ToRole="Orquidea1" />
+          <NavigationProperty Name="OrquideaMatriz" Relationship="OrquideasModel.OrquideaOrquidea" FromRole="Orquidea1" ToRole="Orquidea" />
         </EntityType>
         <EntityType Name="Repot">
           <Key>
@@ -278,6 +284,18 @@
             </Principal>
             <Dependent Role="Repot">
               <PropertyRef Name="Container" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrquideaOrquidea">
+          <End Type="OrquideasModel.Orquidea" Role="Orquidea" Multiplicity="0..1" />
+          <End Type="OrquideasModel.Orquidea" Role="Orquidea1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orquidea">
+              <PropertyRef Name="OrquideaID" />
+            </Principal>
+            <Dependent Role="Orquidea1">
+              <PropertyRef Name="Matriz" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

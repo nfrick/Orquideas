@@ -17,6 +17,10 @@ namespace DataLayer {
         }
 
         public string Descricao => ToString();
+
+        public string GeneroNome => Genero.Nome;
+
+        public int UltimoSequencial => Mudas.Any() ? (int)Mudas.Max(m => m.Sequencial) : 0;
     }
 
     public partial class Genero {

@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using DataLayer;
+﻿using DataLayer;
+using GridAndChartStyleLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,23 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using GridAndChartStyleLibrary;
+using MoneyBin;
+using Orquideas.Properties;
 
 namespace Orquideas {
     public partial class FormMain : Form {
         private Orquidea OrquideaAtual => (Orquidea)dgvOrquideas.CurrentRow?.DataBoundItem;
 
         public FormMain() {
+            
             InitializeComponent();
+            dgvOrquideas.AutoGenerateColumns = false;
+
             GridStyles.FormatGrid(dgvOrquideas);
             GridStyles.FormatGrid(dgvRepots);
             GridStyles.FormatGrid(dgvFloracoes);
 
-            
+
             SetFontSize(dgvOrquideas, 12);
             SetFontSize(dgvRepots, 12);
             SetFontSize(dgvFloracoes, 12);
@@ -35,8 +40,8 @@ namespace Orquideas {
             comboBoxGenero.DisplayMember = "Nome";
 
             var containers = from ContainerType c in entityDataSource1.EntitySets["ContainerTypes"]
-                orderby c.Container
-                select c;
+                             orderby c.Container
+                             select c;
 
             containerDataGridViewComboBoxColumn.DataSource = containers.ToList();
             containerDataGridViewComboBoxColumn.ValueMember = "ContainerID";
@@ -113,8 +118,7 @@ namespace Orquideas {
             if (OrquideaAtual == null) {
                 return;
             }
-            const string path = @"F:\Users\Nelson\Documents\Araras\Plantas\Orquideas\Fotos\";
-            var file = $"{path}{OrquideaAtual.OrquideaID:0000}.jpg";
+            var file = $"{Resources.FotosPath}{OrquideaAtual.OrquideaID:0000}.jpg";
             pictureBoxFoto.ImageLocation = File.Exists(file) ? file : string.Empty;
         }
 
@@ -124,8 +128,69 @@ namespace Orquideas {
 
         private void dgvOrquideas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var orquidea = (Orquidea)dgvOrquideas.Rows[e.RowIndex].DataBoundItem;
-            if (orquidea.Termino != null)
+            if (orquidea.Termino != null) {
                 e.CellStyle.ForeColor = Color.Gray;
+            }
+        }
+
+        private void toolStripButtonNew_Click(object sender, System.EventArgs e) {
+            var btn = (ToolStripButton)sender;
+            var frm = new frmAddNew {
+                comboBoxGenero = {
+                    DataSource = comboBoxGenero.DataSource,
+                    ValueMember = comboBoxGenero.ValueMember,
+                    DisplayMember = comboBoxGenero.DisplayMember
+                }
+            };
+            if (!btn.Name.EndsWith("New")) {
+                frm.Lock = true;
+                frm.comboBoxGenero.SelectedItem = comboBoxGenero.SelectedItem;
+                frm.textBoxEspecie.Text = textBoxEspecie.Text;
+                frm.textBoxCorPrincipal.Text = textBoxCorPrincipal.Text;
+                frm.textBoxCorSecundaria.Text = textBoxCorSecundaria.Text;
+            }
+            if (frm.ShowDialog() == DialogResult.Cancel) {
+                return;
+            }
+
+            var o = new Orquidea {
+                GeneroID = (int)((Genero)frm.comboBoxGenero.SelectedItem).GeneroID,
+                Especie = frm.textBoxEspecie.Text,
+                CorPrincipal = frm.textBoxCorPrincipal.Text,
+                CorSecundaria = frm.textBoxCorSecundaria.Text,
+                Data = frm.dateTimePickerCompra.Value,
+                Origem = frm.textBoxOrigem.Text
+            };
+            SalvarOrquidea(o);
+        }
+
+        private void toolStripButtonMuda_Click(object sender, System.EventArgs e) {
+                var o = new Orquidea {
+                    GeneroID = OrquideaAtual.GeneroID,
+                    Especie = OrquideaAtual.Especie,
+                    CorPrincipal = OrquideaAtual.CorPrincipal,
+                    CorSecundaria = OrquideaAtual.CorSecundaria,
+                    Data = DateTime.Today,
+                    Origem = "casa",
+                    Matriz = OrquideaAtual.OrquideaID,
+                    Sequencial = OrquideaAtual.UltimoSequencial + 1
+                };
+                SalvarOrquidea(o);
+        }
+
+        private void SalvarOrquidea(Orquidea o) {
+            using (var ctx = new OrquideasEntities()) {
+                ctx.Orquideas.Add(o);
+                ctx.SaveChanges();
+            }
+            entityDataSource1.Refresh();
+            var row = dgvOrquideas.Rows.Cast<DataGridViewRow>().First(r => (int) r.Cells[0].Value == o.OrquideaID).Index;
+            dgvOrquideas.CurrentCell = dgvOrquideas.Rows[row].Cells[0];
+        }
+
+        private void toolStripButtonReport_Click(object sender, EventArgs e) {
+            var frm = new frmReport();
+            frm.ShowDialog();
         }
     }
 }

@@ -27,12 +27,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvFloracoes = new System.Windows.Forms.DataGridView();
+            this.floracaoInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.floracaoTerminoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.floresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hastesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvRepots = new System.Windows.Forms.DataGridView();
@@ -71,14 +76,31 @@
             this.comboBoxGenero = new System.Windows.Forms.ComboBox();
             this.textBoxEspecie = new System.Windows.Forms.TextBox();
             this.dgvOrquideas = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
-            this.floracaoInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.floracaoTerminoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.floresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hastesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrquideaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generoNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ultimoSequencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orquideaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generoIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.especieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.corPrincipalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.corSecundariaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.terminoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.origemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matrizDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orquideaMatrizDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDuplicar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMuda = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -98,7 +120,6 @@
             // 
             this.entityDataSource1.DbContextType = typeof(DataLayer.OrquideasEntities);
             // 
-            // 
             // toolStripContainer1
             // 
             // 
@@ -106,14 +127,14 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel1);
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1200, 600);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1235, 600);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(1200, 625);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1235, 625);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -125,8 +146,8 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.83333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70.16666F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.75F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.25F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgvOrquideas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -135,7 +156,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1200, 600);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1235, 600);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -166,9 +187,9 @@
             this.panel1.Controls.Add(this.comboBoxGenero);
             this.panel1.Controls.Add(this.textBoxEspecie);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(361, 3);
+            this.panel1.Location = new System.Drawing.Point(395, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(836, 594);
+            this.panel1.Size = new System.Drawing.Size(837, 594);
             this.panel1.TabIndex = 1;
             // 
             // tabControl1
@@ -209,6 +230,41 @@
             this.dgvFloracoes.RowHeadersWidth = 25;
             this.dgvFloracoes.Size = new System.Drawing.Size(796, 144);
             this.dgvFloracoes.TabIndex = 31;
+            // 
+            // floracaoInicioDataGridViewTextBoxColumn
+            // 
+            this.floracaoInicioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.floracaoInicioDataGridViewTextBoxColumn.DataPropertyName = "FloracaoInicio";
+            this.floracaoInicioDataGridViewTextBoxColumn.HeaderText = "Início";
+            this.floracaoInicioDataGridViewTextBoxColumn.Name = "floracaoInicioDataGridViewTextBoxColumn";
+            this.floracaoInicioDataGridViewTextBoxColumn.Width = 72;
+            // 
+            // floracaoTerminoDataGridViewTextBoxColumn
+            // 
+            this.floracaoTerminoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.floracaoTerminoDataGridViewTextBoxColumn.DataPropertyName = "FloracaoTermino";
+            this.floracaoTerminoDataGridViewTextBoxColumn.HeaderText = "Término";
+            this.floracaoTerminoDataGridViewTextBoxColumn.Name = "floracaoTerminoDataGridViewTextBoxColumn";
+            this.floracaoTerminoDataGridViewTextBoxColumn.Width = 91;
+            // 
+            // floresDataGridViewTextBoxColumn
+            // 
+            this.floresDataGridViewTextBoxColumn.DataPropertyName = "Flores";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.floresDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.floresDataGridViewTextBoxColumn.HeaderText = "Flores";
+            this.floresDataGridViewTextBoxColumn.Name = "floresDataGridViewTextBoxColumn";
+            this.floresDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // hastesDataGridViewTextBoxColumn
+            // 
+            this.hastesDataGridViewTextBoxColumn.DataPropertyName = "Hastes";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.hastesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.hastesDataGridViewTextBoxColumn.HeaderText = "Hastes";
+            this.hastesDataGridViewTextBoxColumn.Name = "hastesDataGridViewTextBoxColumn";
+            this.hastesDataGridViewTextBoxColumn.Width = 60;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dgvRepots);
@@ -317,7 +373,7 @@
             // textBoxTermino
             // 
             this.textBoxTermino.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.Termino", true));
-            this.textBoxTermino.Location = new System.Drawing.Point(122, 356);
+            this.textBoxTermino.Location = new System.Drawing.Point(90, 356);
             this.textBoxTermino.Name = "textBoxTermino";
             this.textBoxTermino.Size = new System.Drawing.Size(129, 29);
             this.textBoxTermino.TabIndex = 30;
@@ -365,7 +421,7 @@
             // 
             // buttonMatriz
             // 
-            this.buttonMatriz.Location = new System.Drawing.Point(369, 154);
+            this.buttonMatriz.Location = new System.Drawing.Point(329, 155);
             this.buttonMatriz.Name = "buttonMatriz";
             this.buttonMatriz.Size = new System.Drawing.Size(75, 28);
             this.buttonMatriz.TabIndex = 9;
@@ -377,7 +433,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(274, 88);
+            this.label6.Location = new System.Drawing.Point(255, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(16, 21);
             this.label6.TabIndex = 24;
@@ -387,7 +443,7 @@
             // textBoxMatriz
             // 
             this.textBoxMatriz.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.Matriz", true));
-            this.textBoxMatriz.Location = new System.Drawing.Point(122, 155);
+            this.textBoxMatriz.Location = new System.Drawing.Point(90, 154);
             this.textBoxMatriz.Name = "textBoxMatriz";
             this.textBoxMatriz.Size = new System.Drawing.Size(64, 29);
             this.textBoxMatriz.TabIndex = 7;
@@ -397,7 +453,7 @@
             // 
             this.dateTimePickerCompra.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entityDataSource1, "Orquideas.Data", true));
             this.dateTimePickerCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerCompra.Location = new System.Drawing.Point(122, 120);
+            this.dateTimePickerCompra.Location = new System.Drawing.Point(90, 120);
             this.dateTimePickerCompra.Name = "dateTimePickerCompra";
             this.dateTimePickerCompra.Size = new System.Drawing.Size(129, 29);
             this.dateTimePickerCompra.TabIndex = 5;
@@ -465,7 +521,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(204, 158);
+            this.label4.Location = new System.Drawing.Point(168, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 21);
             this.label4.TabIndex = 25;
@@ -494,31 +550,31 @@
             // textBoxOrigem
             // 
             this.textBoxOrigem.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.Origem", true));
-            this.textBoxOrigem.Location = new System.Drawing.Point(257, 120);
+            this.textBoxOrigem.Location = new System.Drawing.Point(225, 120);
             this.textBoxOrigem.Name = "textBoxOrigem";
-            this.textBoxOrigem.Size = new System.Drawing.Size(188, 29);
+            this.textBoxOrigem.Size = new System.Drawing.Size(220, 29);
             this.textBoxOrigem.TabIndex = 6;
             // 
             // textBoxCorSecundaria
             // 
             this.textBoxCorSecundaria.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.CorSecundaria", true));
-            this.textBoxCorSecundaria.Location = new System.Drawing.Point(296, 85);
+            this.textBoxCorSecundaria.Location = new System.Drawing.Point(271, 85);
             this.textBoxCorSecundaria.Name = "textBoxCorSecundaria";
-            this.textBoxCorSecundaria.Size = new System.Drawing.Size(148, 29);
+            this.textBoxCorSecundaria.Size = new System.Drawing.Size(173, 29);
             this.textBoxCorSecundaria.TabIndex = 4;
             // 
             // textBoxCorPrincipal
             // 
             this.textBoxCorPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.CorPrincipal", true));
-            this.textBoxCorPrincipal.Location = new System.Drawing.Point(122, 85);
+            this.textBoxCorPrincipal.Location = new System.Drawing.Point(90, 85);
             this.textBoxCorPrincipal.Name = "textBoxCorPrincipal";
-            this.textBoxCorPrincipal.Size = new System.Drawing.Size(148, 29);
+            this.textBoxCorPrincipal.Size = new System.Drawing.Size(163, 29);
             this.textBoxCorPrincipal.TabIndex = 3;
             // 
             // textBoxSequencial
             // 
             this.textBoxSequencial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.Sequencial", true));
-            this.textBoxSequencial.Location = new System.Drawing.Point(295, 155);
+            this.textBoxSequencial.Location = new System.Drawing.Point(259, 155);
             this.textBoxSequencial.Name = "textBoxSequencial";
             this.textBoxSequencial.Size = new System.Drawing.Size(64, 29);
             this.textBoxSequencial.TabIndex = 8;
@@ -528,17 +584,17 @@
             // 
             this.comboBoxGenero.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.entityDataSource1, "Orquideas.Genero", true));
             this.comboBoxGenero.FormattingEnabled = true;
-            this.comboBoxGenero.Location = new System.Drawing.Point(122, 15);
+            this.comboBoxGenero.Location = new System.Drawing.Point(90, 15);
             this.comboBoxGenero.Name = "comboBoxGenero";
-            this.comboBoxGenero.Size = new System.Drawing.Size(322, 29);
+            this.comboBoxGenero.Size = new System.Drawing.Size(354, 29);
             this.comboBoxGenero.TabIndex = 0;
             // 
             // textBoxEspecie
             // 
             this.textBoxEspecie.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.Especie", true));
-            this.textBoxEspecie.Location = new System.Drawing.Point(122, 50);
+            this.textBoxEspecie.Location = new System.Drawing.Point(90, 50);
             this.textBoxEspecie.Name = "textBoxEspecie";
-            this.textBoxEspecie.Size = new System.Drawing.Size(322, 29);
+            this.textBoxEspecie.Size = new System.Drawing.Size(354, 29);
             this.textBoxEspecie.TabIndex = 1;
             // 
             // dgvOrquideas
@@ -549,7 +605,24 @@
             this.dgvOrquideas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrquideas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrquideaID,
-            this.Column1});
+            this.Column1,
+            this.descricaoDataGridViewTextBoxColumn,
+            this.generoNomeDataGridViewTextBoxColumn,
+            this.ultimoSequencialDataGridViewTextBoxColumn,
+            this.orquideaIDDataGridViewTextBoxColumn,
+            this.generoIDDataGridViewTextBoxColumn,
+            this.especieDataGridViewTextBoxColumn,
+            this.numeroDataGridViewTextBoxColumn,
+            this.sequencialDataGridViewTextBoxColumn,
+            this.corPrincipalDataGridViewTextBoxColumn,
+            this.corSecundariaDataGridViewTextBoxColumn,
+            this.dataDataGridViewTextBoxColumn1,
+            this.terminoDataGridViewTextBoxColumn,
+            this.origemDataGridViewTextBoxColumn,
+            this.matrizDataGridViewTextBoxColumn,
+            this.observacoesDataGridViewTextBoxColumn,
+            this.generoDataGridViewTextBoxColumn,
+            this.orquideaMatrizDataGridViewTextBoxColumn});
             this.dgvOrquideas.DataMember = "Orquideas";
             this.dgvOrquideas.DataSource = this.entityDataSource1;
             this.dgvOrquideas.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -562,64 +635,10 @@
             this.dgvOrquideas.RowTemplate.Height = 26;
             this.dgvOrquideas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvOrquideas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrquideas.Size = new System.Drawing.Size(352, 594);
+            this.dgvOrquideas.Size = new System.Drawing.Size(386, 594);
             this.dgvOrquideas.TabIndex = 0;
             this.dgvOrquideas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOrquideas_CellFormatting);
             this.dgvOrquideas.SelectionChanged += new System.EventHandler(this.dgvOrquideas_SelectionChanged);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonSave});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // toolStripButtonSave
-            // 
-            this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSave.Image = global::Orquideas.Properties.Resources.Actions_document_save_icon;
-            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSave.Name = "toolStripButtonSave";
-            this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonSave.Text = "toolStripButton1";
-            this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
-            // 
-            // floracaoInicioDataGridViewTextBoxColumn
-            // 
-            this.floracaoInicioDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.floracaoInicioDataGridViewTextBoxColumn.DataPropertyName = "FloracaoInicio";
-            this.floracaoInicioDataGridViewTextBoxColumn.HeaderText = "Início";
-            this.floracaoInicioDataGridViewTextBoxColumn.Name = "floracaoInicioDataGridViewTextBoxColumn";
-            this.floracaoInicioDataGridViewTextBoxColumn.Width = 72;
-            // 
-            // floracaoTerminoDataGridViewTextBoxColumn
-            // 
-            this.floracaoTerminoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.floracaoTerminoDataGridViewTextBoxColumn.DataPropertyName = "FloracaoTermino";
-            this.floracaoTerminoDataGridViewTextBoxColumn.HeaderText = "Término";
-            this.floracaoTerminoDataGridViewTextBoxColumn.Name = "floracaoTerminoDataGridViewTextBoxColumn";
-            this.floracaoTerminoDataGridViewTextBoxColumn.Width = 91;
-            // 
-            // floresDataGridViewTextBoxColumn
-            // 
-            this.floresDataGridViewTextBoxColumn.DataPropertyName = "Flores";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.floresDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.floresDataGridViewTextBoxColumn.HeaderText = "Flores";
-            this.floresDataGridViewTextBoxColumn.Name = "floresDataGridViewTextBoxColumn";
-            this.floresDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // hastesDataGridViewTextBoxColumn
-            // 
-            this.hastesDataGridViewTextBoxColumn.DataPropertyName = "Hastes";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.hastesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.hastesDataGridViewTextBoxColumn.HeaderText = "Hastes";
-            this.hastesDataGridViewTextBoxColumn.Name = "hastesDataGridViewTextBoxColumn";
-            this.hastesDataGridViewTextBoxColumn.Width = 60;
             // 
             // OrquideaID
             // 
@@ -639,15 +658,201 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
+            // descricaoDataGridViewTextBoxColumn
+            // 
+            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "Descricao";
+            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Descricao";
+            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
+            this.descricaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // generoNomeDataGridViewTextBoxColumn
+            // 
+            this.generoNomeDataGridViewTextBoxColumn.DataPropertyName = "GeneroNome";
+            this.generoNomeDataGridViewTextBoxColumn.HeaderText = "GeneroNome";
+            this.generoNomeDataGridViewTextBoxColumn.Name = "generoNomeDataGridViewTextBoxColumn";
+            this.generoNomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ultimoSequencialDataGridViewTextBoxColumn
+            // 
+            this.ultimoSequencialDataGridViewTextBoxColumn.DataPropertyName = "UltimoSequencial";
+            this.ultimoSequencialDataGridViewTextBoxColumn.HeaderText = "UltimoSequencial";
+            this.ultimoSequencialDataGridViewTextBoxColumn.Name = "ultimoSequencialDataGridViewTextBoxColumn";
+            this.ultimoSequencialDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // orquideaIDDataGridViewTextBoxColumn
+            // 
+            this.orquideaIDDataGridViewTextBoxColumn.DataPropertyName = "OrquideaID";
+            this.orquideaIDDataGridViewTextBoxColumn.HeaderText = "OrquideaID";
+            this.orquideaIDDataGridViewTextBoxColumn.Name = "orquideaIDDataGridViewTextBoxColumn";
+            this.orquideaIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // generoIDDataGridViewTextBoxColumn
+            // 
+            this.generoIDDataGridViewTextBoxColumn.DataPropertyName = "GeneroID";
+            this.generoIDDataGridViewTextBoxColumn.HeaderText = "GeneroID";
+            this.generoIDDataGridViewTextBoxColumn.Name = "generoIDDataGridViewTextBoxColumn";
+            this.generoIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // especieDataGridViewTextBoxColumn
+            // 
+            this.especieDataGridViewTextBoxColumn.DataPropertyName = "Especie";
+            this.especieDataGridViewTextBoxColumn.HeaderText = "Especie";
+            this.especieDataGridViewTextBoxColumn.Name = "especieDataGridViewTextBoxColumn";
+            this.especieDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Numero";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sequencialDataGridViewTextBoxColumn
+            // 
+            this.sequencialDataGridViewTextBoxColumn.DataPropertyName = "Sequencial";
+            this.sequencialDataGridViewTextBoxColumn.HeaderText = "Sequencial";
+            this.sequencialDataGridViewTextBoxColumn.Name = "sequencialDataGridViewTextBoxColumn";
+            this.sequencialDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // corPrincipalDataGridViewTextBoxColumn
+            // 
+            this.corPrincipalDataGridViewTextBoxColumn.DataPropertyName = "CorPrincipal";
+            this.corPrincipalDataGridViewTextBoxColumn.HeaderText = "CorPrincipal";
+            this.corPrincipalDataGridViewTextBoxColumn.Name = "corPrincipalDataGridViewTextBoxColumn";
+            this.corPrincipalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // corSecundariaDataGridViewTextBoxColumn
+            // 
+            this.corSecundariaDataGridViewTextBoxColumn.DataPropertyName = "CorSecundaria";
+            this.corSecundariaDataGridViewTextBoxColumn.HeaderText = "CorSecundaria";
+            this.corSecundariaDataGridViewTextBoxColumn.Name = "corSecundariaDataGridViewTextBoxColumn";
+            this.corSecundariaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataDataGridViewTextBoxColumn1
+            // 
+            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
+            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // terminoDataGridViewTextBoxColumn
+            // 
+            this.terminoDataGridViewTextBoxColumn.DataPropertyName = "Termino";
+            this.terminoDataGridViewTextBoxColumn.HeaderText = "Termino";
+            this.terminoDataGridViewTextBoxColumn.Name = "terminoDataGridViewTextBoxColumn";
+            this.terminoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // origemDataGridViewTextBoxColumn
+            // 
+            this.origemDataGridViewTextBoxColumn.DataPropertyName = "Origem";
+            this.origemDataGridViewTextBoxColumn.HeaderText = "Origem";
+            this.origemDataGridViewTextBoxColumn.Name = "origemDataGridViewTextBoxColumn";
+            this.origemDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // matrizDataGridViewTextBoxColumn
+            // 
+            this.matrizDataGridViewTextBoxColumn.DataPropertyName = "Matriz";
+            this.matrizDataGridViewTextBoxColumn.HeaderText = "Matriz";
+            this.matrizDataGridViewTextBoxColumn.Name = "matrizDataGridViewTextBoxColumn";
+            this.matrizDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // observacoesDataGridViewTextBoxColumn
+            // 
+            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
+            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observacoes";
+            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
+            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // generoDataGridViewTextBoxColumn
+            // 
+            this.generoDataGridViewTextBoxColumn.DataPropertyName = "Genero";
+            this.generoDataGridViewTextBoxColumn.HeaderText = "Genero";
+            this.generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
+            this.generoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // orquideaMatrizDataGridViewTextBoxColumn
+            // 
+            this.orquideaMatrizDataGridViewTextBoxColumn.DataPropertyName = "OrquideaMatriz";
+            this.orquideaMatrizDataGridViewTextBoxColumn.HeaderText = "OrquideaMatriz";
+            this.orquideaMatrizDataGridViewTextBoxColumn.Name = "orquideaMatrizDataGridViewTextBoxColumn";
+            this.orquideaMatrizDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonSave,
+            this.toolStripButtonNew,
+            this.toolStripButtonDuplicar,
+            this.toolStripButtonMuda,
+            this.toolStripButtonReport});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(213, 25);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // toolStripButtonSave
+            // 
+            this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSave.Image = global::Orquideas.Properties.Resources.Actions_document_save_icon;
+            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSave.Name = "toolStripButtonSave";
+            this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonSave.Text = "toolStripButton1";
+            this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
+            // 
+            // toolStripButtonNew
+            // 
+            this.toolStripButtonNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonNew.Image = global::Orquideas.Properties.Resources.Actions_list_add_icon;
+            this.toolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonNew.Name = "toolStripButtonNew";
+            this.toolStripButtonNew.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonNew.Text = "Nova";
+            this.toolStripButtonNew.Click += new System.EventHandler(this.toolStripButtonNew_Click);
+            // 
+            // toolStripButtonDuplicar
+            // 
+            this.toolStripButtonDuplicar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.toolStripButtonDuplicar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonDuplicar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDuplicar.Image")));
+            this.toolStripButtonDuplicar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDuplicar.Name = "toolStripButtonDuplicar";
+            this.toolStripButtonDuplicar.Size = new System.Drawing.Size(55, 22);
+            this.toolStripButtonDuplicar.Text = "Duplicar";
+            this.toolStripButtonDuplicar.Click += new System.EventHandler(this.toolStripButtonNew_Click);
+            // 
+            // toolStripButtonMuda
+            // 
+            this.toolStripButtonMuda.BackColor = System.Drawing.Color.PeachPuff;
+            this.toolStripButtonMuda.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonMuda.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMuda.Image")));
+            this.toolStripButtonMuda.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMuda.Name = "toolStripButtonMuda";
+            this.toolStripButtonMuda.Size = new System.Drawing.Size(42, 22);
+            this.toolStripButtonMuda.Text = "Muda";
+            this.toolStripButtonMuda.Click += new System.EventHandler(this.toolStripButtonMuda_Click);
+            // 
+            // toolStripButtonReport
+            // 
+            this.toolStripButtonReport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonReport.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReport.Image")));
+            this.toolStripButtonReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonReport.Name = "toolStripButtonReport";
+            this.toolStripButtonReport.Size = new System.Drawing.Size(58, 22);
+            this.toolStripButtonReport.Text = "Relatório";
+            this.toolStripButtonReport.Click += new System.EventHandler(this.toolStripButtonReport_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 625);
+            this.ClientSize = new System.Drawing.Size(1235, 625);
             this.Controls.Add(this.toolStripContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
@@ -690,7 +895,6 @@
         private System.Windows.Forms.TextBox textBoxSequencial;
         private System.Windows.Forms.ComboBox comboBoxGenero;
         private System.Windows.Forms.TextBox textBoxEspecie;
-        private System.Windows.Forms.DataGridView dgvOrquideas;
         private EFWinforms.EntityDataSource entityDataSource1;
         private System.Windows.Forms.DateTimePicker dateTimePickerCompra;
         private System.Windows.Forms.TextBox textBoxMatriz;
@@ -722,7 +926,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn floracaoTerminoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn floresDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hastesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dgvOrquideas;
+        private System.Windows.Forms.ToolStripButton toolStripButtonNew;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDuplicar;
+        private System.Windows.Forms.ToolStripButton toolStripButtonMuda;
+        private System.Windows.Forms.ToolStripButton toolStripButtonReport;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrquideaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn generoNomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ultimoSequencialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orquideaIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn generoIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn especieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sequencialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn corPrincipalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn corSecundariaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn terminoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn origemDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn matrizDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orquideaMatrizDataGridViewTextBoxColumn;
     }
 }

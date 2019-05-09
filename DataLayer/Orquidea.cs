@@ -19,13 +19,14 @@ namespace DataLayer
         {
             this.Floracoes = new HashSet<Floracao>();
             this.Repots = new HashSet<Repot>();
+            this.Mudas = new HashSet<Orquidea>();
         }
     
         public int OrquideaID { get; set; }
         public int GeneroID { get; set; }
         public string Especie { get; set; }
         public byte Numero { get; set; }
-        public Nullable<byte> Sequencial { get; set; }
+        public Nullable<int> Sequencial { get; set; }
         public string CorPrincipal { get; set; }
         public string CorSecundaria { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
@@ -39,5 +40,8 @@ namespace DataLayer
         public virtual Genero Genero { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Repot> Repots { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orquidea> Mudas { get; set; }
+        public virtual Orquidea OrquideaMatriz { get; set; }
     }
 }

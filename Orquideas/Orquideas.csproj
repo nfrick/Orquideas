@@ -123,10 +123,10 @@
     <EmbeddedResource Include="Reports\rptListagemResumido.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptCatalogoNormal.rdlc">
+    <EmbeddedResource Include="Reports\rptCatálogoNormal.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptCatalogoResumido.rdlc">
+    <EmbeddedResource Include="Reports\rptCatálogoResumido.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />

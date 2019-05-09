@@ -24,8 +24,10 @@ namespace MoneyBin {
             var rptEngine = rptViewer.LocalReport;
             rptEngine.DataSources.Clear();
             rptEngine.ReportPath = string.Format(_rptPath, rptName, toolStripComboBoxFormato.Text);
+            rptEngine.DisplayName =
+                $"Qrquídeas {rptName} {toolStripComboBoxSelecao.Text} ordem {toolStripComboBoxOrdem.Text}";
 
-            if (rptName == "Catalogo") {
+            if (rptName == "Catálogo") {
                 var parameters = new ReportParameter[1];
                 parameters[0] = new ReportParameter("FotosPath", Resources.FotosPath);
                 rptEngine.SetParameters(parameters);

@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Orquidea.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EFWinforms">
       <HintPath>..\..\EF6Winforms\EF6WinForms\bin\Debug\EFWinforms.dll</HintPath>
@@ -160,6 +163,7 @@
     <None Include="Resources\Actions-list-add-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Orquidea.ico" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

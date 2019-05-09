@@ -26,8 +26,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,31 +76,14 @@
             this.comboBoxGenero = new System.Windows.Forms.ComboBox();
             this.textBoxEspecie = new System.Windows.Forms.TextBox();
             this.dgvOrquideas = new System.Windows.Forms.DataGridView();
-            this.OrquideaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ultimoSequencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orquideaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.especieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.corPrincipalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.corSecundariaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.terminoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.origemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matrizDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orquideaMatrizDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDuplicar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonMuda = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
+            this.OrquideaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -605,24 +588,7 @@
             this.dgvOrquideas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrquideas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrquideaID,
-            this.Column1,
-            this.descricaoDataGridViewTextBoxColumn,
-            this.generoNomeDataGridViewTextBoxColumn,
-            this.ultimoSequencialDataGridViewTextBoxColumn,
-            this.orquideaIDDataGridViewTextBoxColumn,
-            this.generoIDDataGridViewTextBoxColumn,
-            this.especieDataGridViewTextBoxColumn,
-            this.numeroDataGridViewTextBoxColumn,
-            this.sequencialDataGridViewTextBoxColumn,
-            this.corPrincipalDataGridViewTextBoxColumn,
-            this.corSecundariaDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn1,
-            this.terminoDataGridViewTextBoxColumn,
-            this.origemDataGridViewTextBoxColumn,
-            this.matrizDataGridViewTextBoxColumn,
-            this.observacoesDataGridViewTextBoxColumn,
-            this.generoDataGridViewTextBoxColumn,
-            this.orquideaMatrizDataGridViewTextBoxColumn});
+            this.Column1});
             this.dgvOrquideas.DataMember = "Orquideas";
             this.dgvOrquideas.DataSource = this.entityDataSource1;
             this.dgvOrquideas.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -639,143 +605,6 @@
             this.dgvOrquideas.TabIndex = 0;
             this.dgvOrquideas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOrquideas_CellFormatting);
             this.dgvOrquideas.SelectionChanged += new System.EventHandler(this.dgvOrquideas_SelectionChanged);
-            // 
-            // OrquideaID
-            // 
-            this.OrquideaID.DataPropertyName = "OrquideaID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.OrquideaID.DefaultCellStyle = dataGridViewCellStyle3;
-            this.OrquideaID.HeaderText = "ID";
-            this.OrquideaID.Name = "OrquideaID";
-            this.OrquideaID.ReadOnly = true;
-            this.OrquideaID.Width = 40;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Descricao";
-            this.Column1.HeaderText = "Descrição";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // descricaoDataGridViewTextBoxColumn
-            // 
-            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "Descricao";
-            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Descricao";
-            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
-            this.descricaoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // generoNomeDataGridViewTextBoxColumn
-            // 
-            this.generoNomeDataGridViewTextBoxColumn.DataPropertyName = "GeneroNome";
-            this.generoNomeDataGridViewTextBoxColumn.HeaderText = "GeneroNome";
-            this.generoNomeDataGridViewTextBoxColumn.Name = "generoNomeDataGridViewTextBoxColumn";
-            this.generoNomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ultimoSequencialDataGridViewTextBoxColumn
-            // 
-            this.ultimoSequencialDataGridViewTextBoxColumn.DataPropertyName = "UltimoSequencial";
-            this.ultimoSequencialDataGridViewTextBoxColumn.HeaderText = "UltimoSequencial";
-            this.ultimoSequencialDataGridViewTextBoxColumn.Name = "ultimoSequencialDataGridViewTextBoxColumn";
-            this.ultimoSequencialDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orquideaIDDataGridViewTextBoxColumn
-            // 
-            this.orquideaIDDataGridViewTextBoxColumn.DataPropertyName = "OrquideaID";
-            this.orquideaIDDataGridViewTextBoxColumn.HeaderText = "OrquideaID";
-            this.orquideaIDDataGridViewTextBoxColumn.Name = "orquideaIDDataGridViewTextBoxColumn";
-            this.orquideaIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // generoIDDataGridViewTextBoxColumn
-            // 
-            this.generoIDDataGridViewTextBoxColumn.DataPropertyName = "GeneroID";
-            this.generoIDDataGridViewTextBoxColumn.HeaderText = "GeneroID";
-            this.generoIDDataGridViewTextBoxColumn.Name = "generoIDDataGridViewTextBoxColumn";
-            this.generoIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // especieDataGridViewTextBoxColumn
-            // 
-            this.especieDataGridViewTextBoxColumn.DataPropertyName = "Especie";
-            this.especieDataGridViewTextBoxColumn.HeaderText = "Especie";
-            this.especieDataGridViewTextBoxColumn.Name = "especieDataGridViewTextBoxColumn";
-            this.especieDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Numero";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sequencialDataGridViewTextBoxColumn
-            // 
-            this.sequencialDataGridViewTextBoxColumn.DataPropertyName = "Sequencial";
-            this.sequencialDataGridViewTextBoxColumn.HeaderText = "Sequencial";
-            this.sequencialDataGridViewTextBoxColumn.Name = "sequencialDataGridViewTextBoxColumn";
-            this.sequencialDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // corPrincipalDataGridViewTextBoxColumn
-            // 
-            this.corPrincipalDataGridViewTextBoxColumn.DataPropertyName = "CorPrincipal";
-            this.corPrincipalDataGridViewTextBoxColumn.HeaderText = "CorPrincipal";
-            this.corPrincipalDataGridViewTextBoxColumn.Name = "corPrincipalDataGridViewTextBoxColumn";
-            this.corPrincipalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // corSecundariaDataGridViewTextBoxColumn
-            // 
-            this.corSecundariaDataGridViewTextBoxColumn.DataPropertyName = "CorSecundaria";
-            this.corSecundariaDataGridViewTextBoxColumn.HeaderText = "CorSecundaria";
-            this.corSecundariaDataGridViewTextBoxColumn.Name = "corSecundariaDataGridViewTextBoxColumn";
-            this.corSecundariaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataDataGridViewTextBoxColumn1
-            // 
-            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
-            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // terminoDataGridViewTextBoxColumn
-            // 
-            this.terminoDataGridViewTextBoxColumn.DataPropertyName = "Termino";
-            this.terminoDataGridViewTextBoxColumn.HeaderText = "Termino";
-            this.terminoDataGridViewTextBoxColumn.Name = "terminoDataGridViewTextBoxColumn";
-            this.terminoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // origemDataGridViewTextBoxColumn
-            // 
-            this.origemDataGridViewTextBoxColumn.DataPropertyName = "Origem";
-            this.origemDataGridViewTextBoxColumn.HeaderText = "Origem";
-            this.origemDataGridViewTextBoxColumn.Name = "origemDataGridViewTextBoxColumn";
-            this.origemDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // matrizDataGridViewTextBoxColumn
-            // 
-            this.matrizDataGridViewTextBoxColumn.DataPropertyName = "Matriz";
-            this.matrizDataGridViewTextBoxColumn.HeaderText = "Matriz";
-            this.matrizDataGridViewTextBoxColumn.Name = "matrizDataGridViewTextBoxColumn";
-            this.matrizDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // observacoesDataGridViewTextBoxColumn
-            // 
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
-            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // generoDataGridViewTextBoxColumn
-            // 
-            this.generoDataGridViewTextBoxColumn.DataPropertyName = "Genero";
-            this.generoDataGridViewTextBoxColumn.HeaderText = "Genero";
-            this.generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
-            this.generoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orquideaMatrizDataGridViewTextBoxColumn
-            // 
-            this.orquideaMatrizDataGridViewTextBoxColumn.DataPropertyName = "OrquideaMatriz";
-            this.orquideaMatrizDataGridViewTextBoxColumn.HeaderText = "OrquideaMatriz";
-            this.orquideaMatrizDataGridViewTextBoxColumn.Name = "orquideaMatrizDataGridViewTextBoxColumn";
-            this.orquideaMatrizDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -843,6 +672,24 @@
             this.toolStripButtonReport.Text = "Relatório";
             this.toolStripButtonReport.Click += new System.EventHandler(this.toolStripButtonReport_Click);
             // 
+            // OrquideaID
+            // 
+            this.OrquideaID.DataPropertyName = "OrquideaID";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.OrquideaID.DefaultCellStyle = dataGridViewCellStyle3;
+            this.OrquideaID.HeaderText = "ID";
+            this.OrquideaID.Name = "OrquideaID";
+            this.OrquideaID.ReadOnly = true;
+            this.OrquideaID.Width = 40;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Descricao";
+            this.Column1.HeaderText = "Descrição";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -850,10 +697,11 @@
             this.ClientSize = new System.Drawing.Size(1235, 625);
             this.Controls.Add(this.toolStripContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormMain";
+            this.Text = "Orquídeas";
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
@@ -933,22 +781,5 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonReport;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrquideaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoNomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ultimoSequencialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orquideaIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn especieDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sequencialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn corPrincipalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn corSecundariaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn terminoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn origemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn matrizDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orquideaMatrizDataGridViewTextBoxColumn;
     }
 }

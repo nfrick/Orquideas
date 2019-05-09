@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.rptViewer = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -65,8 +65,8 @@
             // rptViewer
             // 
             this.rptViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Value = null;
-            this.rptViewer.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Value = null;
+            this.rptViewer.LocalReport.DataSources.Add(reportDataSource1);
             this.rptViewer.LocalReport.EnableExternalImages = true;
             this.rptViewer.LocalReport.ReportEmbeddedResource = "";
             this.rptViewer.Location = new System.Drawing.Point(0, 0);
@@ -159,6 +159,7 @@
             this.ClientSize = new System.Drawing.Size(724, 583);
             this.Controls.Add(this.toolStripContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "frmReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

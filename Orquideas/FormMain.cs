@@ -1,39 +1,34 @@
 ﻿using DataLayer;
 using GridAndChartStyleLibrary;
+using MoneyBin;
+using Orquideas.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using MoneyBin;
-using Orquideas.Properties;
 
 namespace Orquideas {
     public partial class FormMain : Form {
         private Orquidea OrquideaAtual => (Orquidea)dgvOrquideas.CurrentRow?.DataBoundItem;
 
+        private string[] _Cores;
+        private string[] _Origens;
+
         public FormMain() {
-            
             InitializeComponent();
             dgvOrquideas.AutoGenerateColumns = false;
 
-            GridStyles.FormatGrid(dgvOrquideas);
-            GridStyles.FormatGrid(dgvRepots);
-            GridStyles.FormatGrid(dgvFloracoes);
-
-
-            SetFontSize(dgvOrquideas, 12);
-            SetFontSize(dgvRepots, 12);
-            SetFontSize(dgvFloracoes, 12);
+            GridStyles.FormatGrid(dgvOrquideas, 12, 2);
+            GridStyles.FormatGrid(dgvRepots, 12);
+            GridStyles.FormatGrid(dgvFloracoes, 12);
 
             var generos =
                 from Genero g in entityDataSource1.EntitySets["Generos"]
                 orderby g.Nome
                 select g;
-
             // assign BindingList to grid
             comboBoxGenero.DataSource = generos.ToList();
             comboBoxGenero.ValueMember = "GeneroID";
@@ -42,19 +37,24 @@ namespace Orquideas {
             var containers = from ContainerType c in entityDataSource1.EntitySets["ContainerTypes"]
                              orderby c.Container
                              select c;
-
             containerDataGridViewComboBoxColumn.DataSource = containers.ToList();
             containerDataGridViewComboBoxColumn.ValueMember = "ContainerID";
             containerDataGridViewComboBoxColumn.DisplayMember = "Container";
 
             dgvOrquideas.Sort(dgvOrquideas.Columns[1], ListSortDirection.Ascending);
-        }
 
-        private void SetFontSize(DataGridView dgv, float size) {
-            var font = new Font("Segoe UI", size);
-            for (var i = 0; i < dgv.ColumnCount; i++) {
-                dgv.Columns[i].DefaultCellStyle.Font = font;
-            }
+            var sep = new[] { ',' };
+            _Cores = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
+                         where !string.IsNullOrEmpty(o.CorPrincipal)
+                         select o.CorPrincipal +
+                         (string.IsNullOrEmpty(o.CorSecundaria) ? "" : "," + o.CorSecundaria))
+                         .ToList()
+                         .Select(c => c.Split(sep)).SelectMany(c => c)
+                         .Select(c => c.Trim()).Distinct().OrderBy(c => c).ToArray();
+
+            _Origens = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
+                        where !string.IsNullOrEmpty(o.Origem)
+                        select o.Origem).Distinct().OrderBy(o => 0).ToArray();
         }
 
         private IOrderedQueryable<Orquidea> OutrasDaMesmaEspecie() {
@@ -67,7 +67,7 @@ namespace Orquideas {
                    select o;
         }
 
-        private void buttonMatriz_Click(object sender, System.EventArgs e) {
+        private void buttonMatriz_Click(object sender, EventArgs e) {
             var orquideas = OutrasDaMesmaEspecie();
             switch (orquideas.Count()) {
                 case 0:
@@ -95,7 +95,7 @@ namespace Orquideas {
             }
         }
 
-        private void buttonMatrizOK_Click(object sender, System.EventArgs e) {
+        private void buttonMatrizOK_Click(object sender, EventArgs e) {
             listBoxMatriz.Visible = false;
             buttonMatrizCancel.Visible = false;
             buttonMatrizOK.Visible = false;
@@ -114,7 +114,7 @@ namespace Orquideas {
             textBoxSequencial.Text = OrquideaAtual.Sequencial.ToString();
         }
 
-        private void dgvOrquideas_SelectionChanged(object sender, System.EventArgs e) {
+        private void dgvOrquideas_SelectionChanged(object sender, EventArgs e) {
             if (OrquideaAtual == null) {
                 return;
             }
@@ -122,7 +122,7 @@ namespace Orquideas {
             pictureBoxFoto.ImageLocation = File.Exists(file) ? file : string.Empty;
         }
 
-        private void toolStripButtonSave_Click(object sender, System.EventArgs e) {
+        private void toolStripButtonSave_Click(object sender, EventArgs e) {
             entityDataSource1.SaveChanges();
         }
 
@@ -133,7 +133,7 @@ namespace Orquideas {
             }
         }
 
-        private void toolStripButtonNew_Click(object sender, System.EventArgs e) {
+        private void toolStripButtonNew_Click(object sender, EventArgs e) {
             var btn = (ToolStripButton)sender;
             var frm = new frmAddNew {
                 comboBoxGenero = {
@@ -154,7 +154,7 @@ namespace Orquideas {
             }
 
             var o = new Orquidea {
-                GeneroID = (int)((Genero)frm.comboBoxGenero.SelectedItem).GeneroID,
+                GeneroID = ((Genero)frm.comboBoxGenero.SelectedItem).GeneroID,
                 Especie = frm.textBoxEspecie.Text,
                 CorPrincipal = frm.textBoxCorPrincipal.Text,
                 CorSecundaria = frm.textBoxCorSecundaria.Text,
@@ -164,18 +164,18 @@ namespace Orquideas {
             SalvarOrquidea(o);
         }
 
-        private void toolStripButtonMuda_Click(object sender, System.EventArgs e) {
-                var o = new Orquidea {
-                    GeneroID = OrquideaAtual.GeneroID,
-                    Especie = OrquideaAtual.Especie,
-                    CorPrincipal = OrquideaAtual.CorPrincipal,
-                    CorSecundaria = OrquideaAtual.CorSecundaria,
-                    Data = DateTime.Today,
-                    Origem = "casa",
-                    Matriz = OrquideaAtual.OrquideaID,
-                    Sequencial = OrquideaAtual.UltimoSequencial + 1
-                };
-                SalvarOrquidea(o);
+        private void toolStripButtonMuda_Click(object sender, EventArgs e) {
+            var o = new Orquidea {
+                GeneroID = OrquideaAtual.GeneroID,
+                Especie = OrquideaAtual.Especie,
+                CorPrincipal = OrquideaAtual.CorPrincipal,
+                CorSecundaria = OrquideaAtual.CorSecundaria,
+                Data = DateTime.Today,
+                Origem = "casa",
+                Matriz = OrquideaAtual.OrquideaID,
+                Sequencial = OrquideaAtual.UltimoSequencial + 1
+            };
+            SalvarOrquidea(o);
         }
 
         private void SalvarOrquidea(Orquidea o) {
@@ -184,13 +184,24 @@ namespace Orquideas {
                 ctx.SaveChanges();
             }
             entityDataSource1.Refresh();
-            var row = dgvOrquideas.Rows.Cast<DataGridViewRow>().First(r => (int) r.Cells[0].Value == o.OrquideaID).Index;
+            var row = dgvOrquideas.Rows.Cast<DataGridViewRow>().First(r => (int)r.Cells[0].Value == o.OrquideaID).Index;
             dgvOrquideas.CurrentCell = dgvOrquideas.Rows[row].Cells[0];
         }
 
         private void toolStripButtonReport_Click(object sender, EventArgs e) {
             var frm = new frmReport();
             frm.ShowDialog();
+        }
+
+        private void textBoxCorOuOrigem_TextChanged(object sender, EventArgs e) {
+            var t = sender as TextBox;
+            //say you want to do a search when user types 3 or more chars
+            if (!(t?.Text.Length >= 3)) {
+                return;
+            }
+            var collection = new AutoCompleteStringCollection();
+            collection.AddRange(t.Name.Contains("Cor") ? _Cores : _Origens);
+            t.AutoCompleteCustomSource = collection;
         }
     }
 }

@@ -532,27 +532,36 @@
             // 
             // textBoxOrigem
             // 
+            this.textBoxOrigem.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxOrigem.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxOrigem.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.Origem", true));
             this.textBoxOrigem.Location = new System.Drawing.Point(225, 120);
             this.textBoxOrigem.Name = "textBoxOrigem";
             this.textBoxOrigem.Size = new System.Drawing.Size(220, 29);
             this.textBoxOrigem.TabIndex = 6;
+            this.textBoxOrigem.TextChanged += new System.EventHandler(this.textBoxCorOuOrigem_TextChanged);
             // 
             // textBoxCorSecundaria
             // 
+            this.textBoxCorSecundaria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxCorSecundaria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxCorSecundaria.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.CorSecundaria", true));
             this.textBoxCorSecundaria.Location = new System.Drawing.Point(271, 85);
             this.textBoxCorSecundaria.Name = "textBoxCorSecundaria";
             this.textBoxCorSecundaria.Size = new System.Drawing.Size(173, 29);
             this.textBoxCorSecundaria.TabIndex = 4;
+            this.textBoxCorSecundaria.TextChanged += new System.EventHandler(this.textBoxCorOuOrigem_TextChanged);
             // 
             // textBoxCorPrincipal
             // 
+            this.textBoxCorPrincipal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxCorPrincipal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.textBoxCorPrincipal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSource1, "Orquideas.CorPrincipal", true));
             this.textBoxCorPrincipal.Location = new System.Drawing.Point(90, 85);
             this.textBoxCorPrincipal.Name = "textBoxCorPrincipal";
             this.textBoxCorPrincipal.Size = new System.Drawing.Size(163, 29);
             this.textBoxCorPrincipal.TabIndex = 3;
+            this.textBoxCorPrincipal.TextChanged += new System.EventHandler(this.textBoxCorOuOrigem_TextChanged);
             // 
             // textBoxSequencial
             // 

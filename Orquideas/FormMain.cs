@@ -46,11 +46,12 @@ namespace Orquideas {
             var sep = new[] { ',' };
             _Cores = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
                          where !string.IsNullOrEmpty(o.CorPrincipal)
-                         select o.CorPrincipal +
-                         (string.IsNullOrEmpty(o.CorSecundaria) ? "" : "," + o.CorSecundaria))
-                         .ToList()
-                         .Select(c => c.Split(sep)).SelectMany(c => c)
-                         .Select(c => c.Trim()).Distinct().OrderBy(c => c).ToArray();
+                         select o.CorPrincipal + "," + o.CorSecundaria)
+                         .ToList().Aggregate((i, j) => i + "," + j)
+                         .Split(sep).Select(c => c.Trim())
+                         .Distinct()
+                         .Where(c => !string.IsNullOrEmpty(c))
+                         .OrderBy(c => c).ToArray(); ;
 
             _Origens = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
                         where !string.IsNullOrEmpty(o.Origem)

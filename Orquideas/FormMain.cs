@@ -166,6 +166,9 @@ namespace Orquideas {
         }
 
         private void toolStripButtonMuda_Click(object sender, EventArgs e) {
+            if (MessageBox.Show($"Confirma criação de muda para\n\n{OrquideaAtual.Descricao}?",
+                    "Muda", MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question) == DialogResult.No) return;
             var o = new Orquidea {
                 GeneroID = OrquideaAtual.GeneroID,
                 Especie = OrquideaAtual.Especie,

@@ -100,8 +100,8 @@
             this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDuplicar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonMuda = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -387,6 +387,7 @@
             this.pictureBoxFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxFoto.TabIndex = 29;
             this.pictureBoxFoto.TabStop = false;
+            this.pictureBoxFoto.DoubleClick += new System.EventHandler(this.pictureBoxFoto_DoubleClick);
             // 
             // listBoxMatriz
             // 
@@ -799,7 +800,7 @@
             this.toolStripButtonReport});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(250, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(219, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonSave
@@ -844,6 +845,11 @@
             this.toolStripButtonMuda.Text = "Muda";
             this.toolStripButtonMuda.Click += new System.EventHandler(this.toolStripButtonMuda_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButtonReport
             // 
             this.toolStripButtonReport.BackColor = System.Drawing.Color.PaleGreen;
@@ -854,11 +860,6 @@
             this.toolStripButtonReport.Size = new System.Drawing.Size(58, 22);
             this.toolStripButtonReport.Text = "Relatório";
             this.toolStripButtonReport.Click += new System.EventHandler(this.toolStripButtonReport_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // FormMain
             // 

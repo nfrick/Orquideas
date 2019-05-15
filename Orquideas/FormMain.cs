@@ -121,6 +121,7 @@ namespace Orquideas {
             }
             var file = $"{Resources.FotosPath}{OrquideaAtual.OrquideaID:0000}.jpg";
             pictureBoxFoto.ImageLocation = File.Exists(file) ? file : string.Empty;
+            pictureBoxFoto.Visible = !string.IsNullOrEmpty(pictureBoxFoto.ImageLocation);
         }
 
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
@@ -206,6 +207,11 @@ namespace Orquideas {
             var collection = new AutoCompleteStringCollection();
             collection.AddRange(t.Name.Contains("Cor") ? _Cores : _Origens);
             t.AutoCompleteCustomSource = collection;
+        }
+
+        private void pictureBoxFoto_DoubleClick(object sender, EventArgs e) {
+            var frm = new frmZoom(OrquideaAtual.Descricao, pictureBoxFoto.ImageLocation);
+            frm.Show();
         }
     }
 }

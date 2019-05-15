@@ -1,5 +1,5 @@
 ﻿namespace Orquideas {
-    partial class FormMain {
+    partial class frmMain {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -27,7 +27,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -102,6 +102,8 @@
             this.toolStripButtonMuda = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonExcel = new System.Windows.Forms.ToolStripButton();
+            this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -797,10 +799,11 @@
             this.toolStripButtonDuplicar,
             this.toolStripButtonMuda,
             this.toolStripSeparator1,
-            this.toolStripButtonReport});
+            this.toolStripButtonReport,
+            this.toolStripButtonExcel});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(219, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(256, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButtonSave
@@ -852,7 +855,7 @@
             // 
             // toolStripButtonReport
             // 
-            this.toolStripButtonReport.BackColor = System.Drawing.Color.PaleGreen;
+            this.toolStripButtonReport.BackColor = System.Drawing.Color.Khaki;
             this.toolStripButtonReport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButtonReport.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonReport.Image")));
             this.toolStripButtonReport.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -861,7 +864,18 @@
             this.toolStripButtonReport.Text = "Relatório";
             this.toolStripButtonReport.Click += new System.EventHandler(this.toolStripButtonReport_Click);
             // 
-            // FormMain
+            // toolStripButtonExcel
+            // 
+            this.toolStripButtonExcel.BackColor = System.Drawing.Color.LightGreen;
+            this.toolStripButtonExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonExcel.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExcel.Image")));
+            this.toolStripButtonExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExcel.Name = "toolStripButtonExcel";
+            this.toolStripButtonExcel.Size = new System.Drawing.Size(37, 22);
+            this.toolStripButtonExcel.Text = "Excel";
+            this.toolStripButtonExcel.Click += new System.EventHandler(this.toolStripButtonExcel_Click);
+            // 
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -870,7 +884,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "FormMain";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Orquídeas";
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -970,5 +984,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orquideaMatrizDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonExcel;
+        private System.Windows.Forms.SaveFileDialog SFD;
     }
 }

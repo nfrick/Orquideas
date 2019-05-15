@@ -1,6 +1,8 @@
 ﻿using DataLayer;
 using GridAndChartStyleLibrary;
 using MoneyBin;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
 using Orquideas.Properties;
 using System;
 using System.Collections.Generic;
@@ -11,14 +13,20 @@ using System.Linq;
 using System.Windows.Forms;
 
 namespace Orquideas {
-    public partial class FormMain : Form {
+    public partial class frmMain : Form {
         private Orquidea OrquideaAtual => (Orquidea)dgvOrquideas.CurrentRow?.DataBoundItem;
 
         private string[] _Cores;
         private string[] _Origens;
 
-        public FormMain() {
+        public frmMain() {
             InitializeComponent();
+
+            SFD.DefaultExt = "xlsx";
+            SFD.Filter = @"Excel Files|*.xlsx";
+            SFD.FileName = "Orquideas.xlsx";
+            SFD.InitialDirectory = @"F:\Users\Nelson\SkyDrive\Orquídeas";
+
             dgvOrquideas.AutoGenerateColumns = false;
 
             GridStyles.FormatGrid(dgvOrquideas, 12, 2);
@@ -45,8 +53,8 @@ namespace Orquideas {
 
             var sep = new[] { ',' };
             _Cores = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
-                         where !string.IsNullOrEmpty(o.CorPrincipal)
-                         select o.CorPrincipal + "," + o.CorSecundaria)
+                      where !string.IsNullOrEmpty(o.CorPrincipal)
+                      select o.CorPrincipal + "," + o.CorSecundaria)
                          .ToList().Aggregate((i, j) => i + "," + j)
                          .Split(sep).Select(c => c.Trim())
                          .Distinct()
@@ -168,8 +176,11 @@ namespace Orquideas {
 
         private void toolStripButtonMuda_Click(object sender, EventArgs e) {
             if (MessageBox.Show($"Confirma criação de muda para\n\n{OrquideaAtual.Descricao}?",
-                    "Muda", MessageBoxButtons.YesNo, 
-                    MessageBoxIcon.Question) == DialogResult.No) return;
+                    "Muda", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.No) {
+                return;
+            }
+
             var o = new Orquidea {
                 GeneroID = OrquideaAtual.GeneroID,
                 Especie = OrquideaAtual.Especie,
@@ -212,6 +223,68 @@ namespace Orquideas {
         private void pictureBoxFoto_DoubleClick(object sender, EventArgs e) {
             var frm = new frmZoom(OrquideaAtual.Descricao, pictureBoxFoto.ImageLocation);
             frm.Show();
+        }
+
+        private void toolStripButtonExcel_Click(object sender, EventArgs e) {
+            if (SFD.ShowDialog() == DialogResult.Cancel) {
+                return;
+            }
+
+            if(File.Exists(SFD.FileName))
+                File.Delete(SFD.FileName);
+
+            if (!Directory.Exists(@"F:\Users\Nelson\SkyDrive\Orquídeas\Fotos"))
+                Directory.CreateDirectory(@"F:\Users\Nelson\SkyDrive\Orquídeas\Fotos");
+
+            var pck = new ExcelPackage(new FileInfo(SFD.FileName));
+            var ws = pck.Workbook.Worksheets.Add("Orquídeas");
+            ws.View.ShowGridLines = false;
+
+            var col = 1;
+            ws.Cells[1, col++].Value = "OrQuideaID";
+            ws.Cells[1, col++].Value = "Descricao";
+            ws.Cells[1, col++].Value = "Termino";
+            ws.Cells[1, col].Value = "Image [image]";
+
+            var row = 0;
+            foreach (DataGridViewRow linha in dgvOrquideas.Rows) {
+                var orquidea = (Orquidea)linha.DataBoundItem;
+                col = 1;
+                row = linha.Index + 2;
+                ws.Cells[row, col++].Value = orquidea.OrquideaID;
+                ws.Cells[row, col++].Value = orquidea.Descricao;
+                ws.Cells[row, col++].Value = orquidea.Termino;
+
+                var file = $"{Resources.FotosPath}{orquidea.OrquideaID:0000}.jpg";
+                if (File.Exists(file)) {
+                    ws.Cells[row, col].Value = $"./Fotos/{orquidea.OrquideaID:0000}.jpg";
+                    // Copy file to OneDrive
+                     var target = $@"F:\Users\Nelson\SkyDrive\Orquídeas\Fotos\{orquidea.OrquideaID:0000}.jpg";
+                    if(File.Exists(target))
+                        File.Delete(target);
+                    File.Copy(file, target);
+                }
+                else {
+                    ws.Cells[row, col].Value = $"./Fotos/0000.jpg";
+                }
+            }
+
+            ws.Cells[2, 3,
+                dgvOrquideas.RowCount + 1, 3].Style.Numberformat.Format = "dd/MM/yyyy";
+
+
+            ws.Cells.AutoFitColumns(0);
+
+            var range = ws.Cells[1, 1, dgvOrquideas.RowCount + 1, 4];
+            var table = ws.Tables.Add(range, "tblOrquideas");
+            table.ShowTotal = false;
+            table.TableStyle = TableStyles.Light1;
+
+            ws.View.FreezePanes(2, 1);
+            pck.Save();
+
+
+            MessageBox.Show(@"Orquídeas exportadas.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

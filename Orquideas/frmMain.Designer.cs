@@ -1,4 +1,6 @@
-﻿namespace Orquideas {
+﻿using SuperGrid;
+
+namespace Orquideas {
     partial class frmMain {
         /// <summary>
         /// Required designer variable.
@@ -26,21 +28,33 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvFloracoes = new System.Windows.Forms.DataGridView();
+            this.dgvFloracoes = new SuperGrid.SuperDGV();
             this.floracaoInicioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.floracaoTerminoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.floresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hastesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.entityDataSource1 = new EFWinforms.EntityDataSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvRepots = new System.Windows.Forms.DataGridView();
+            this.dgvRepots = new SuperGrid.SuperDGV();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.containerDataGridViewComboBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.xaximDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -75,26 +89,7 @@
             this.textBoxSequencial = new System.Windows.Forms.TextBox();
             this.comboBoxGenero = new System.Windows.Forms.ComboBox();
             this.textBoxEspecie = new System.Windows.Forms.TextBox();
-            this.dgvOrquideas = new System.Windows.Forms.DataGridView();
-            this.OrquideaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoNomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ultimoSequencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orquideaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.especieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sequencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.corPrincipalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.corSecundariaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.terminoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.origemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matrizDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.generoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orquideaMatrizDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvOrquideas = new SuperGrid.SuperDGV();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
@@ -104,6 +99,8 @@
             this.toolStripButtonReport = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonExcel = new System.Windows.Forms.ToolStripButton();
             this.SFD = new System.Windows.Forms.SaveFileDialog();
+            this.OrquideaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -218,7 +215,23 @@
             // 
             // dgvFloracoes
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvFloracoes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvFloracoes.AutoGenerateColumns = false;
+            this.dgvFloracoes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvFloracoes.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvFloracoes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFloracoes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFloracoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFloracoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.floracaoInicioDataGridViewTextBoxColumn,
@@ -227,10 +240,30 @@
             this.hastesDataGridViewTextBoxColumn});
             this.dgvFloracoes.DataMember = "Orquideas.Floracoes";
             this.dgvFloracoes.DataSource = this.entityDataSource1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFloracoes.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvFloracoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFloracoes.EnableHeadersVisualStyles = false;
+            this.dgvFloracoes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvFloracoes.Location = new System.Drawing.Point(3, 3);
             this.dgvFloracoes.Name = "dgvFloracoes";
+            this.dgvFloracoes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFloracoes.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvFloracoes.RowHeadersWidth = 25;
+            this.dgvFloracoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFloracoes.Size = new System.Drawing.Size(796, 144);
             this.dgvFloracoes.TabIndex = 31;
             // 
@@ -240,7 +273,7 @@
             this.floracaoInicioDataGridViewTextBoxColumn.DataPropertyName = "FloracaoInicio";
             this.floracaoInicioDataGridViewTextBoxColumn.HeaderText = "Início";
             this.floracaoInicioDataGridViewTextBoxColumn.Name = "floracaoInicioDataGridViewTextBoxColumn";
-            this.floracaoInicioDataGridViewTextBoxColumn.Width = 72;
+            this.floracaoInicioDataGridViewTextBoxColumn.Width = 71;
             // 
             // floracaoTerminoDataGridViewTextBoxColumn
             // 
@@ -248,13 +281,13 @@
             this.floracaoTerminoDataGridViewTextBoxColumn.DataPropertyName = "FloracaoTermino";
             this.floracaoTerminoDataGridViewTextBoxColumn.HeaderText = "Término";
             this.floracaoTerminoDataGridViewTextBoxColumn.Name = "floracaoTerminoDataGridViewTextBoxColumn";
-            this.floracaoTerminoDataGridViewTextBoxColumn.Width = 91;
+            this.floracaoTerminoDataGridViewTextBoxColumn.Width = 90;
             // 
             // floresDataGridViewTextBoxColumn
             // 
             this.floresDataGridViewTextBoxColumn.DataPropertyName = "Flores";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.floresDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.floresDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.floresDataGridViewTextBoxColumn.HeaderText = "Flores";
             this.floresDataGridViewTextBoxColumn.Name = "floresDataGridViewTextBoxColumn";
             this.floresDataGridViewTextBoxColumn.Width = 60;
@@ -262,8 +295,8 @@
             // hastesDataGridViewTextBoxColumn
             // 
             this.hastesDataGridViewTextBoxColumn.DataPropertyName = "Hastes";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.hastesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.hastesDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.hastesDataGridViewTextBoxColumn.HeaderText = "Hastes";
             this.hastesDataGridViewTextBoxColumn.Name = "hastesDataGridViewTextBoxColumn";
             this.hastesDataGridViewTextBoxColumn.Width = 60;
@@ -281,7 +314,23 @@
             // 
             // dgvRepots
             // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvRepots.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvRepots.AutoGenerateColumns = false;
+            this.dgvRepots.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvRepots.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvRepots.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRepots.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvRepots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRepots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataDataGridViewTextBoxColumn,
@@ -296,9 +345,30 @@
             this.areiaDataGridViewCheckBoxColumn});
             this.dgvRepots.DataMember = "Orquideas.Repots";
             this.dgvRepots.DataSource = this.entityDataSource1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRepots.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRepots.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRepots.EnableHeadersVisualStyles = false;
+            this.dgvRepots.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvRepots.Location = new System.Drawing.Point(3, 3);
             this.dgvRepots.Name = "dgvRepots";
+            this.dgvRepots.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRepots.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvRepots.RowHeadersWidth = 20;
+            this.dgvRepots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRepots.Size = new System.Drawing.Size(796, 152);
             this.dgvRepots.TabIndex = 0;
             // 
@@ -614,35 +684,53 @@
             // 
             this.dgvOrquideas.AllowUserToAddRows = false;
             this.dgvOrquideas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvOrquideas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvOrquideas.AutoGenerateColumns = false;
+            this.dgvOrquideas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvOrquideas.BackgroundColor = System.Drawing.Color.Black;
+            this.dgvOrquideas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrquideas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvOrquideas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrquideas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrquideaID,
-            this.Column1,
-            this.descricaoDataGridViewTextBoxColumn,
-            this.generoNomeDataGridViewTextBoxColumn,
-            this.ultimoSequencialDataGridViewTextBoxColumn,
-            this.orquideaIDDataGridViewTextBoxColumn,
-            this.generoIDDataGridViewTextBoxColumn,
-            this.especieDataGridViewTextBoxColumn,
-            this.numeroDataGridViewTextBoxColumn,
-            this.sequencialDataGridViewTextBoxColumn,
-            this.corPrincipalDataGridViewTextBoxColumn,
-            this.corSecundariaDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn1,
-            this.terminoDataGridViewTextBoxColumn,
-            this.origemDataGridViewTextBoxColumn,
-            this.matrizDataGridViewTextBoxColumn,
-            this.observacoesDataGridViewTextBoxColumn,
-            this.generoDataGridViewTextBoxColumn,
-            this.orquideaMatrizDataGridViewTextBoxColumn});
+            this.descricaoDataGridViewTextBoxColumn});
             this.dgvOrquideas.DataMember = "Orquideas";
             this.dgvOrquideas.DataSource = this.entityDataSource1;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrquideas.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvOrquideas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvOrquideas.EnableHeadersVisualStyles = false;
+            this.dgvOrquideas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvOrquideas.Location = new System.Drawing.Point(3, 3);
             this.dgvOrquideas.MultiSelect = false;
             this.dgvOrquideas.Name = "dgvOrquideas";
             this.dgvOrquideas.ReadOnly = true;
+            this.dgvOrquideas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrquideas.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvOrquideas.RowHeadersVisible = false;
             this.dgvOrquideas.RowHeadersWidth = 25;
             this.dgvOrquideas.RowTemplate.Height = 26;
@@ -652,143 +740,6 @@
             this.dgvOrquideas.TabIndex = 0;
             this.dgvOrquideas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvOrquideas_CellFormatting);
             this.dgvOrquideas.SelectionChanged += new System.EventHandler(this.dgvOrquideas_SelectionChanged);
-            // 
-            // OrquideaID
-            // 
-            this.OrquideaID.DataPropertyName = "OrquideaID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.OrquideaID.DefaultCellStyle = dataGridViewCellStyle3;
-            this.OrquideaID.HeaderText = "ID";
-            this.OrquideaID.Name = "OrquideaID";
-            this.OrquideaID.ReadOnly = true;
-            this.OrquideaID.Width = 40;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Descricao";
-            this.Column1.HeaderText = "Descrição";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // descricaoDataGridViewTextBoxColumn
-            // 
-            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "Descricao";
-            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Descricao";
-            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
-            this.descricaoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // generoNomeDataGridViewTextBoxColumn
-            // 
-            this.generoNomeDataGridViewTextBoxColumn.DataPropertyName = "GeneroNome";
-            this.generoNomeDataGridViewTextBoxColumn.HeaderText = "GeneroNome";
-            this.generoNomeDataGridViewTextBoxColumn.Name = "generoNomeDataGridViewTextBoxColumn";
-            this.generoNomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ultimoSequencialDataGridViewTextBoxColumn
-            // 
-            this.ultimoSequencialDataGridViewTextBoxColumn.DataPropertyName = "UltimoSequencial";
-            this.ultimoSequencialDataGridViewTextBoxColumn.HeaderText = "UltimoSequencial";
-            this.ultimoSequencialDataGridViewTextBoxColumn.Name = "ultimoSequencialDataGridViewTextBoxColumn";
-            this.ultimoSequencialDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orquideaIDDataGridViewTextBoxColumn
-            // 
-            this.orquideaIDDataGridViewTextBoxColumn.DataPropertyName = "OrquideaID";
-            this.orquideaIDDataGridViewTextBoxColumn.HeaderText = "OrquideaID";
-            this.orquideaIDDataGridViewTextBoxColumn.Name = "orquideaIDDataGridViewTextBoxColumn";
-            this.orquideaIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // generoIDDataGridViewTextBoxColumn
-            // 
-            this.generoIDDataGridViewTextBoxColumn.DataPropertyName = "GeneroID";
-            this.generoIDDataGridViewTextBoxColumn.HeaderText = "GeneroID";
-            this.generoIDDataGridViewTextBoxColumn.Name = "generoIDDataGridViewTextBoxColumn";
-            this.generoIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // especieDataGridViewTextBoxColumn
-            // 
-            this.especieDataGridViewTextBoxColumn.DataPropertyName = "Especie";
-            this.especieDataGridViewTextBoxColumn.HeaderText = "Especie";
-            this.especieDataGridViewTextBoxColumn.Name = "especieDataGridViewTextBoxColumn";
-            this.especieDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Numero";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sequencialDataGridViewTextBoxColumn
-            // 
-            this.sequencialDataGridViewTextBoxColumn.DataPropertyName = "Sequencial";
-            this.sequencialDataGridViewTextBoxColumn.HeaderText = "Sequencial";
-            this.sequencialDataGridViewTextBoxColumn.Name = "sequencialDataGridViewTextBoxColumn";
-            this.sequencialDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // corPrincipalDataGridViewTextBoxColumn
-            // 
-            this.corPrincipalDataGridViewTextBoxColumn.DataPropertyName = "CorPrincipal";
-            this.corPrincipalDataGridViewTextBoxColumn.HeaderText = "CorPrincipal";
-            this.corPrincipalDataGridViewTextBoxColumn.Name = "corPrincipalDataGridViewTextBoxColumn";
-            this.corPrincipalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // corSecundariaDataGridViewTextBoxColumn
-            // 
-            this.corSecundariaDataGridViewTextBoxColumn.DataPropertyName = "CorSecundaria";
-            this.corSecundariaDataGridViewTextBoxColumn.HeaderText = "CorSecundaria";
-            this.corSecundariaDataGridViewTextBoxColumn.Name = "corSecundariaDataGridViewTextBoxColumn";
-            this.corSecundariaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataDataGridViewTextBoxColumn1
-            // 
-            this.dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn1.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
-            this.dataDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // terminoDataGridViewTextBoxColumn
-            // 
-            this.terminoDataGridViewTextBoxColumn.DataPropertyName = "Termino";
-            this.terminoDataGridViewTextBoxColumn.HeaderText = "Termino";
-            this.terminoDataGridViewTextBoxColumn.Name = "terminoDataGridViewTextBoxColumn";
-            this.terminoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // origemDataGridViewTextBoxColumn
-            // 
-            this.origemDataGridViewTextBoxColumn.DataPropertyName = "Origem";
-            this.origemDataGridViewTextBoxColumn.HeaderText = "Origem";
-            this.origemDataGridViewTextBoxColumn.Name = "origemDataGridViewTextBoxColumn";
-            this.origemDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // matrizDataGridViewTextBoxColumn
-            // 
-            this.matrizDataGridViewTextBoxColumn.DataPropertyName = "Matriz";
-            this.matrizDataGridViewTextBoxColumn.HeaderText = "Matriz";
-            this.matrizDataGridViewTextBoxColumn.Name = "matrizDataGridViewTextBoxColumn";
-            this.matrizDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // observacoesDataGridViewTextBoxColumn
-            // 
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
-            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // generoDataGridViewTextBoxColumn
-            // 
-            this.generoDataGridViewTextBoxColumn.DataPropertyName = "Genero";
-            this.generoDataGridViewTextBoxColumn.HeaderText = "Genero";
-            this.generoDataGridViewTextBoxColumn.Name = "generoDataGridViewTextBoxColumn";
-            this.generoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // orquideaMatrizDataGridViewTextBoxColumn
-            // 
-            this.orquideaMatrizDataGridViewTextBoxColumn.DataPropertyName = "OrquideaMatriz";
-            this.orquideaMatrizDataGridViewTextBoxColumn.HeaderText = "OrquideaMatriz";
-            this.orquideaMatrizDataGridViewTextBoxColumn.Name = "orquideaMatrizDataGridViewTextBoxColumn";
-            this.orquideaMatrizDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -875,6 +826,24 @@
             this.toolStripButtonExcel.Text = "Excel";
             this.toolStripButtonExcel.Click += new System.EventHandler(this.toolStripButtonExcel_Click);
             // 
+            // OrquideaID
+            // 
+            this.OrquideaID.DataPropertyName = "OrquideaID";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.OrquideaID.DefaultCellStyle = dataGridViewCellStyle13;
+            this.OrquideaID.HeaderText = "ID";
+            this.OrquideaID.Name = "OrquideaID";
+            this.OrquideaID.ReadOnly = true;
+            this.OrquideaID.Width = 40;
+            // 
+            // descricaoDataGridViewTextBoxColumn
+            // 
+            this.descricaoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricaoDataGridViewTextBoxColumn.DataPropertyName = "Descricao";
+            this.descricaoDataGridViewTextBoxColumn.HeaderText = "Descricao";
+            this.descricaoDataGridViewTextBoxColumn.Name = "descricaoDataGridViewTextBoxColumn";
+            this.descricaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -938,11 +907,11 @@
         private System.Windows.Forms.Button buttonMatrizOK;
         private System.Windows.Forms.PictureBox pictureBoxFoto;
         private System.Windows.Forms.TextBox textBoxTermino;
-        private System.Windows.Forms.DataGridView dgvFloracoes;
+        private SuperDGV dgvFloracoes;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dgvRepots;
+        private SuperDGV dgvRepots;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn containerDataGridViewComboBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn xaximDataGridViewCheckBoxColumn;
@@ -959,32 +928,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn floracaoTerminoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn floresDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hastesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dgvOrquideas;
+        private SuperDGV dgvOrquideas;
         private System.Windows.Forms.ToolStripButton toolStripButtonNew;
         private System.Windows.Forms.ToolStripButton toolStripButtonDuplicar;
         private System.Windows.Forms.ToolStripButton toolStripButtonMuda;
         private System.Windows.Forms.ToolStripButton toolStripButtonReport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrquideaID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoNomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ultimoSequencialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orquideaIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn especieDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sequencialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn corPrincipalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn corSecundariaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn terminoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn origemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn matrizDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn generoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orquideaMatrizDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonExcel;
         private System.Windows.Forms.SaveFileDialog SFD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrquideaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
     }
 }

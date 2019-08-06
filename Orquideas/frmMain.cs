@@ -1,5 +1,5 @@
 ﻿using DataLayer;
-using GridAndChartStyleLibrary;
+using SuperGrid;
 using MoneyBin;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
@@ -28,9 +28,9 @@ namespace Orquideas {
 
             dgvOrquideas.AutoGenerateColumns = false;
 
-            GridStyles.FormatGrid(dgvOrquideas, 12, 2);
-            GridStyles.FormatGrid(dgvRepots, 12);
-            GridStyles.FormatGrid(dgvFloracoes, 12);
+            dgvOrquideas.SetFont(null, 12);
+            dgvRepots.SetFont(null, 12);
+            dgvFloracoes.SetFont(null, 12);
 
             var generos =
                 from Genero g in entityDataSource1.EntitySets["Generos"]

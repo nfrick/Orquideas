@@ -22,5 +22,17 @@ namespace Orquideas.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D:\\Users\\Nelson Frick\\Documents\\Araras\\Plantas\\Orquideas\\Fotos\\xx\\")]
+        public string FotosPath {
+            get {
+                return ((string)(this["FotosPath"]));
+            }
+            set {
+                this["FotosPath"] = value;
+            }
+        }
     }
 }

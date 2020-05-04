@@ -12,6 +12,8 @@ namespace DataLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class OrquideasEntities : DbContext
     {
@@ -30,5 +32,41 @@ namespace DataLayer
         public virtual DbSet<Orquidea> Orquideas { get; set; }
         public virtual DbSet<Repot> Repots { get; set; }
         public virtual DbSet<ContainerType> ContainerTypes { get; set; }
+    
+        public virtual ObjectResult<string> spCores()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spCores");
+        }
+    
+        public virtual ObjectResult<string> spOrigens()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("spOrigens");
+        }
+    
+        public virtual ObjectResult<Orquidea> spOrquideas(string selecao, string ordem)
+        {
+            var selecaoParameter = selecao != null ?
+                new ObjectParameter("Selecao", selecao) :
+                new ObjectParameter("Selecao", typeof(string));
+    
+            var ordemParameter = ordem != null ?
+                new ObjectParameter("Ordem", ordem) :
+                new ObjectParameter("Ordem", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orquidea>("spOrquideas", selecaoParameter, ordemParameter);
+        }
+    
+        public virtual ObjectResult<Orquidea> spOrquideas(string selecao, string ordem, MergeOption mergeOption)
+        {
+            var selecaoParameter = selecao != null ?
+                new ObjectParameter("Selecao", selecao) :
+                new ObjectParameter("Selecao", typeof(string));
+    
+            var ordemParameter = ordem != null ?
+                new ObjectParameter("Ordem", ordem) :
+                new ObjectParameter("Ordem", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Orquidea>("spOrquideas", mergeOption, selecaoParameter, ordemParameter);
+        }
     }
 }

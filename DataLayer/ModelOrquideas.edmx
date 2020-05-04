@@ -36,13 +36,13 @@
           <Key>
             <PropertyRef Name="OrquideaID" />
           </Key>
-          <Property Name="OrquideaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrquideaID" Type="int" Nullable="false" />
           <Property Name="GeneroID" Type="int" Nullable="false" />
           <Property Name="Especie" Type="nvarchar" MaxLength="70" />
           <Property Name="Numero" Type="int" Nullable="false" />
           <Property Name="Sequencial" Type="int" />
           <Property Name="CorPrincipal" Type="nvarchar" MaxLength="15" />
-          <Property Name="CorSecundaria" Type="nvarchar" MaxLength="20" />
+          <Property Name="CorSecundaria" Type="nvarchar" MaxLength="30" />
           <Property Name="Data" Type="datetime" />
           <Property Name="Termino" Type="datetime" />
           <Property Name="Origem" Type="nvarchar" MaxLength="50" />
@@ -114,6 +114,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spCores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spOrigens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spOrquideas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Selecao" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ordem" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="OrquideasModelStoreContainer">
           <EntitySet Name="tblContainerTypes" EntityType="Self.tblContainerTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFloracoes" EntityType="Self.tblFloracoes" Schema="dbo" store:Type="Tables" />
@@ -167,6 +173,12 @@
             <End Role="Orquidea" EntitySet="Orquideas" />
             <End Role="Orquidea1" EntitySet="Orquideas" />
           </AssociationSet>
+          <FunctionImport Name="spCores" ReturnType="Collection(String)" />
+          <FunctionImport Name="spOrigens" ReturnType="Collection(String)" />
+          <FunctionImport Name="spOrquideas" EntitySet="Orquideas" ReturnType="Collection(OrquideasModel.Orquidea)" >
+            <Parameter Name="Selecao" Mode="In" Type="String" />
+            <Parameter Name="Ordem" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Floracao">
           <Key>
@@ -197,10 +209,10 @@
           <Property Name="OrquideaID" Type="Int32" Nullable="false" />
           <Property Name="GeneroID" Type="Int32" Nullable="false" />
           <Property Name="Especie" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="Numero" Type="Byte" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
           <Property Name="Sequencial" Type="Int32" />
           <Property Name="CorPrincipal" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="CorSecundaria" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CorSecundaria" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Data" Type="DateTime" Precision="3" />
           <Property Name="Termino" Type="DateTime" Precision="3" />
           <Property Name="Origem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -219,7 +231,7 @@
           <Property Name="RepotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrquideaID" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Container" Type="Byte" Nullable="false" />
+          <Property Name="Container" Type="Byte" Nullable="false" DefaultValue="1" />
           <Property Name="Xaxim" Type="Boolean" Nullable="false" />
           <Property Name="Pinus" Type="Boolean" Nullable="false" />
           <Property Name="CascaPinus" Type="Boolean" Nullable="false" />
@@ -371,6 +383,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spCores" FunctionName="OrquideasModel.Store.spCores" />
+          <FunctionImportMapping FunctionImportName="spOrigens" FunctionName="OrquideasModel.Store.spOrigens" />
+          <FunctionImportMapping FunctionImportName="spOrquideas" FunctionName="OrquideasModel.Store.spOrquideas" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

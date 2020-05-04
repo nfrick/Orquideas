@@ -99,14 +99,5 @@ namespace Orquideas.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to F:\Users\Nelson\Documents\Araras\Plantas\Orquideas\Fotos\.
-        /// </summary>
-        internal static string FotosPath {
-            get {
-                return ResourceManager.GetString("FotosPath", resourceCulture);
-            }
-        }
     }
 }

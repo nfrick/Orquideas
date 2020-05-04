@@ -9,7 +9,7 @@
               <Width>0.86021cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>17.30798cm</Width>
+              <Width>4.93416cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -27,7 +27,7 @@
                             <TextRun>
                               <Value>=Fields!OrquideaID.Value</Value>
                               <Style>
-                                <FontFamily>tahoma</FontFamily>
+                                <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
                               </Style>
                             </TextRun>
@@ -59,12 +59,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Descricao.Value &amp; 
-iif(IsNothing(Fields!Data.Value), "", " - " &amp; Format(Fields!Data.Value, "dd/MM/yy")) &amp; 
-iif(IsNothing(Fields!Termino.Value), "", " - " &amp; Format(Fields!Termino.Value, "dd/MM/yy")) &amp; 
-iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
+                              <Value>=Trim(Fields!GeneroAbrev.Value &amp; " " &amp; Fields!Especie.Value) &amp;
+iif(len(Fields!CorPrincipal.Value &amp; Fields!CorSecundaria.Value), 
+vbcrlf &amp; Fields!CorPrincipal.Value &amp; " " &amp; Fields!CorSecundaria.Value, "")</Value>
                               <Style>
-                                <FontFamily>tahoma</FontFamily>
+                                <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
                               </Style>
                             </TextRun>
@@ -106,7 +105,7 @@ iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>0.65292cm</Height>
-        <Width>18.16819cm</Width>
+        <Width>5.79437cm</Width>
         <Style>
           <Border>
             <Color>White</Color>
@@ -120,7 +119,7 @@ iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
     <Height>0.25706in</Height>
     <Style />
   </Body>
-  <Width>7.18061in</Width>
+  <Width>2.34104in</Width>
   <Page>
     <PageHeader>
       <Height>1.66688cm</Height>
@@ -207,7 +206,7 @@ iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.60854cm</Height>
+      <Height>0.50271cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -234,7 +233,8 @@ iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
     <RightMargin>1cm</RightMargin>
     <TopMargin>1cm</TopMargin>
     <BottomMargin>1cm</BottomMargin>
-    <ColumnSpacing>0.3cm</ColumnSpacing>
+    <Columns>3</Columns>
+    <ColumnSpacing>0.2cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
@@ -278,6 +278,10 @@ iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
           <DataField>Genero</DataField>
           <rd:TypeName>DataLayer.Genero</rd:TypeName>
         </Field>
+        <Field Name="GeneroAbrev">
+          <DataField>GeneroAbrev</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="GeneroID">
           <DataField>GeneroID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -292,7 +296,7 @@ iif(IsNothing(Fields!Origem.Value), "", " - " &amp; Fields!Origem.Value)</Value>
         </Field>
         <Field Name="Numero">
           <DataField>Numero</DataField>
-          <rd:TypeName>System.Byte</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Observacoes">
           <DataField>Observacoes</DataField>

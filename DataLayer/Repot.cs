@@ -14,6 +14,12 @@ namespace DataLayer
     
     public partial class Repot
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Repot()
+        {
+            this.Container = 1;
+        }
+    
         public int RepotID { get; set; }
         public int OrquideaID { get; set; }
         public System.DateTime Data { get; set; }

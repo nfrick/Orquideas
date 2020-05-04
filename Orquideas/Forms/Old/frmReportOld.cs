@@ -5,14 +5,13 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MoneyBin {
-    public partial class frmReport : Form {
-        private OrquideasEntities _ctx;
+namespace Orquideas {
+    public partial class frmReportOld : Form {
+        private readonly OrquideasEntities _ctx = new OrquideasEntities();
         private static string _rptPath;
 
-        public frmReport() {
+        public frmReportOld() {
             InitializeComponent();
-            _ctx = new OrquideasEntities();
         }
 
         private void Form_Load(object sender, EventArgs e) {
@@ -29,7 +28,7 @@ namespace MoneyBin {
 
             if (rptName == "Catálogo") {
                 var parameters = new ReportParameter[1];
-                parameters[0] = new ReportParameter("FotosPath", Resources.FotosPath);
+                parameters[0] = new ReportParameter("FotosPath", Settings.Default.FotosPath);
                 rptEngine.SetParameters(parameters);
             }
 

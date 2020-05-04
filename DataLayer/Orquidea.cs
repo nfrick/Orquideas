@@ -17,15 +17,15 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Orquidea()
         {
-            this.Floracoes = new HashSet<Floracao>();
-            this.Repots = new HashSet<Repot>();
-            this.Mudas = new HashSet<Orquidea>();
+            this.Floracoes = new ObservableListSource<Floracao>();
+            this.Repots = new ObservableListSource<Repot>();
+            this.Mudas = new ObservableListSource<Orquidea>();
         }
     
         public int OrquideaID { get; set; }
         public int GeneroID { get; set; }
         public string Especie { get; set; }
-        public byte Numero { get; set; }
+        public int Numero { get; set; }
         public Nullable<int> Sequencial { get; set; }
         public string CorPrincipal { get; set; }
         public string CorSecundaria { get; set; }
@@ -36,12 +36,12 @@ namespace DataLayer
         public string Observacoes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Floracao> Floracoes { get; set; }
+        public virtual ObservableListSource<Floracao> Floracoes { get; set; }
         public virtual Genero Genero { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Repot> Repots { get; set; }
+        public virtual ObservableListSource<Repot> Repots { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orquidea> Mudas { get; set; }
+        public virtual ObservableListSource<Orquidea> Mudas { get; set; }
         public virtual Orquidea OrquideaMatriz { get; set; }
     }
 }

@@ -17,13 +17,13 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ContainerType()
         {
-            this.tblRepots = new HashSet<Repot>();
+            this.tblRepots = new ObservableListSource<Repot>();
         }
     
         public byte ContainerID { get; set; }
         public string Container { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Repot> tblRepots { get; set; }
+        public virtual ObservableListSource<Repot> tblRepots { get; set; }
     }
 }

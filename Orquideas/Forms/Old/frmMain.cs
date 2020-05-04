@@ -1,12 +1,12 @@
 ﻿using DataLayer;
-using SuperGrid;
-using MoneyBin;
+using DbContextExtensions;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using Orquideas.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,13 +14,22 @@ using System.Windows.Forms;
 
 namespace Orquideas {
     public partial class frmMain : Form {
-        private Orquidea OrquideaAtual => (Orquidea)dgvOrquideas.CurrentRow?.DataBoundItem;
+        private Orquidea OrquideaAtual => (Orquidea)bsOrquideas.Current;
 
-        private string[] _Cores;
-        private string[] _Origens;
+        private readonly OrquideasEntities _ctx = new OrquideasEntities();
+        private readonly string[] _Cores;
+        private readonly string[] _Origens;
 
         public frmMain() {
             InitializeComponent();
+            _ctx.Orquideas.Load();
+            bsOrquideas.DataSource = _ctx.Orquideas.Local.ToBindingList();
+            _ctx.ContainerTypes.Load();
+            bsContainerType.DataSource = _ctx.ContainerTypes.Local.ToBindingList();
+            bsContainerType.Sort = "Container";
+
+            _Cores = _ctx.spCores().ToArray();
+            _Origens = _ctx.spOrigens().ToArray();
 
             SFD.DefaultExt = "xlsx";
             SFD.Filter = @"Excel Files|*.xlsx";
@@ -32,41 +41,20 @@ namespace Orquideas {
             dgvRepots.SetFont(null, 12);
             dgvFloracoes.SetFont(null, 12);
 
-            var generos =
-                from Genero g in entityDataSource1.EntitySets["Generos"]
-                orderby g.Nome
-                select g;
             // assign BindingList to grid
-            comboBoxGenero.DataSource = generos.ToList();
+            comboBoxGenero.DataSource = _ctx.Generos.OrderBy(g => g.Nome).ToList();
             comboBoxGenero.ValueMember = "GeneroID";
             comboBoxGenero.DisplayMember = "Nome";
 
-            var containers = from ContainerType c in entityDataSource1.EntitySets["ContainerTypes"]
-                             orderby c.Container
-                             select c;
-            containerDataGridViewComboBoxColumn.DataSource = containers.ToList();
-            containerDataGridViewComboBoxColumn.ValueMember = "ContainerID";
-            containerDataGridViewComboBoxColumn.DisplayMember = "Container";
+            listBoxMatriz.ValueMember = "OrquideaID";
+            listBoxMatriz.DisplayMember = "OrquideaID";
 
-            dgvOrquideas.Sort(dgvOrquideas.Columns[1], ListSortDirection.Ascending);
-
-            var sep = new[] { ',' };
-            _Cores = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
-                      where !string.IsNullOrEmpty(o.CorPrincipal)
-                      select o.CorPrincipal + "," + o.CorSecundaria)
-                         .ToList().Aggregate((i, j) => i + "," + j)
-                         .Split(sep).Select(c => c.Trim())
-                         .Distinct()
-                         .Where(c => !string.IsNullOrEmpty(c))
-                         .OrderBy(c => c).ToArray(); ;
-
-            _Origens = (from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
-                        where !string.IsNullOrEmpty(o.Origem)
-                        select o.Origem).Distinct().OrderBy(o => 0).ToArray();
+            //dgvOrquideas.Sort(dgvOrquideas.Columns[1], ListSortDirection.Ascending);
+            bsOrquideas.Sort = "Descricao";
         }
 
-        private IOrderedQueryable<Orquidea> OutrasDaMesmaEspecie() {
-            return from Orquidea o in entityDataSource1.EntitySets["Orquideas"]
+        private IOrderedEnumerable<Orquidea> OutrasDaMesmaEspecie() {
+            return from Orquidea o in _ctx.Orquideas.Local
                    where o.OrquideaID != OrquideaAtual.OrquideaID &&
                          o.GeneroID == OrquideaAtual.GeneroID &&
                          o.Especie == OrquideaAtual.Especie &&
@@ -80,34 +68,31 @@ namespace Orquideas {
             var orquideas = OutrasDaMesmaEspecie();
             switch (orquideas.Count()) {
                 case 0:
-                    MessageBox.Show("Nenhuma matriz encontrada.", "Matriz", MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Nenhuma matriz encontrada.", "Matriz",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     break;
                 case 1:
-                    OrquideaAtual.Matriz = orquideas.First().OrquideaID;
                     OrquideaAtual.Numero = 1;
                     OrquideaAtual.Sequencial = 1;
-                    orquideas.First().Numero = 1;
+                    var first = orquideas.First();
+                    OrquideaAtual.Matriz = first.OrquideaID;
+                    first.Numero = 1;
                     break;
                 default:
-                    // create BindingList (sortable/filterable)
-                    var bindingListOrquideas = entityDataSource1.CreateView(orquideas);
-
-                    // assign BindingList to grid
-                    listBoxMatriz.DataSource = bindingListOrquideas;
-                    listBoxMatriz.ValueMember = "OrquideaID";
-                    listBoxMatriz.DisplayMember = "OrquideaID";
-                    listBoxMatriz.Visible = true;
-                    buttonMatrizCancel.Visible = true;
-                    buttonMatrizOK.Visible = true;
+                    listBoxMatriz.DataSource = orquideas.ToList();
+                    MatrizControlsVisible(true);
                     break;
             }
         }
 
-        private void buttonMatrizOK_Click(object sender, EventArgs e) {
-            listBoxMatriz.Visible = false;
-            buttonMatrizCancel.Visible = false;
-            buttonMatrizOK.Visible = false;
+        private void MatrizControlsVisible(bool visible) {
+            listBoxMatriz.Visible = visible;
+            buttonMatrizCancel.Visible = visible;
+            buttonMatrizOK.Visible = visible;
+        }
+
+        private void buttonMatrizOKCancel_Click(object sender, EventArgs e) {
+            MatrizControlsVisible(false);
             var btn = (Button)sender;
             var selected = (Orquidea)listBoxMatriz.SelectedItem;
             if (btn.Name.Contains("Cancel") || OrquideaAtual.Matriz == selected.OrquideaID) {
@@ -119,6 +104,7 @@ namespace Orquideas {
             var list = (IEnumerable<Orquidea>)listBoxMatriz.DataSource;
             var max = list.Where(o => o.Matriz == selected.OrquideaID).OrderByDescending(o => o.Sequencial)
                 .FirstOrDefault();
+
             OrquideaAtual.Sequencial = (byte?)(max?.Sequencial + 1 ?? 1);
             textBoxSequencial.Text = OrquideaAtual.Sequencial.ToString();
         }
@@ -127,13 +113,26 @@ namespace Orquideas {
             if (OrquideaAtual == null) {
                 return;
             }
-            var file = $"{Resources.FotosPath}{OrquideaAtual.OrquideaID:0000}.jpg";
+
+            var fotosPath = Settings.Default.FotosPath;
+            while (!Directory.Exists(fotosPath)) {
+                if (FBD.ShowDialog() == DialogResult.Cancel) {
+                    return;
+                }
+                fotosPath = FBD.SelectedPath + @"\";
+                Settings.Default.FotosPath = fotosPath;
+                Settings.Default.Save();
+            }
+
+            var file = $"{fotosPath}{OrquideaAtual.OrquideaID:0000}.jpg";
             pictureBoxFoto.ImageLocation = File.Exists(file) ? file : string.Empty;
             pictureBoxFoto.Visible = !string.IsNullOrEmpty(pictureBoxFoto.ImageLocation);
         }
 
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            entityDataSource1.SaveChanges();
+            if (!_ctx.SaveChanges(out var message)) {
+                MessageBox.Show(message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void dgvOrquideas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -181,31 +180,23 @@ namespace Orquideas {
                 return;
             }
 
-            var o = new Orquidea {
-                GeneroID = OrquideaAtual.GeneroID,
-                Especie = OrquideaAtual.Especie,
-                CorPrincipal = OrquideaAtual.CorPrincipal,
-                CorSecundaria = OrquideaAtual.CorSecundaria,
-                Data = DateTime.Today,
-                Origem = "casa",
-                Matriz = OrquideaAtual.OrquideaID,
-                Sequencial = OrquideaAtual.UltimoSequencial + 1
-            };
+            var o = OrquideaAtual.Muda();
+
             SalvarOrquidea(o);
         }
 
         private void SalvarOrquidea(Orquidea o) {
-            using (var ctx = new OrquideasEntities()) {
-                ctx.Orquideas.Add(o);
-                ctx.SaveChanges();
+            _ctx.Orquideas.Local.Add(o);
+            if (!_ctx.SaveChanges(out var message)) {
+                MessageBox.Show(message, "Muda", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            entityDataSource1.Refresh();
+
             var row = dgvOrquideas.Rows.Cast<DataGridViewRow>().First(r => (int)r.Cells[0].Value == o.OrquideaID).Index;
             dgvOrquideas.CurrentCell = dgvOrquideas.Rows[row].Cells[0];
         }
 
         private void toolStripButtonReport_Click(object sender, EventArgs e) {
-            var frm = new frmReport();
+            var frm = new frmReportOld();
             frm.ShowDialog();
         }
 
@@ -272,7 +263,7 @@ namespace Orquideas {
                     ws.Cells[row, col++].Value = orquidea.Sequencial;
                     ws.Cells[row, col++].Value = orquidea.Termino;
 
-                    var foto = $"{Resources.FotosPath}{orquidea.OrquideaID:0000}.jpg";
+                    var foto = $"{Settings.Default.FotosPath}{orquidea.OrquideaID:0000}.jpg";
                     if (File.Exists(foto)) {
                         ws.Cells[row, col].Value = $"./Fotos/{orquidea.OrquideaID:0000}.jpg";
                         // Copy file to OneDrive if newer
@@ -311,6 +302,29 @@ namespace Orquideas {
             }
 
             MessageBox.Show(@"Orquídeas exportadas.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void textBoxTermino_Validating(object sender, CancelEventArgs e) {
+            textBoxTermino.Text = textBoxTermino.Text.Trim();
+            var termino = textBoxTermino.Text;
+            if (string.IsNullOrEmpty(termino)) {
+                OrquideaAtual.Termino = null;
+                return;
+            }
+            e.Cancel = !DateTime.TryParse(termino, out var data);
+        }
+
+        private void labelTermino_DoubleClick(object sender, EventArgs e) {
+            OrquideaAtual.Termino = null;
+        }
+
+        private void dgvRepots_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            MessageBox.Show(e.Exception.Message, "DGV Data Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+        }
+
+        private void toolStripButtonFiltrar_Click(object sender, EventArgs e) {
+            bsOrquideas.Filter = $"Descricao = {toolStripTextBoxFiltro.Text}";
+            dgvOrquideas.Refresh();
         }
     }
 }

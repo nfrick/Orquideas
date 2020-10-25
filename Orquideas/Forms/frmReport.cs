@@ -107,7 +107,7 @@ namespace Orquideas {
             var orquideas = _ctx.spOrquideas(_toolStripComboBoxSelecao.Text, 
                     _toolStripComboBoxOrdem.Text);
 
-            SetReport(new string[] { rptName, _toolStripComboBoxFormato.Text },
+            SetLocalReport(new string[] { rptName, _toolStripComboBoxFormato.Text },
               displayName, @"DataSet1", orquideas, parameters);
 
             //SetReport(new string[] { "Listagem", "Simples" }, displayName, @"DataSet1", orquideas, parameters);
